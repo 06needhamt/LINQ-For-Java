@@ -1,2 +1,2 @@
-java -jar dokka.jar "src/linq/collections" -output "Docs"
+java -jar dokka-fatjar.jar "src/linq/collections" -output "Docs"
 pause

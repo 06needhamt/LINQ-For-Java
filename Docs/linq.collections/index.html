@@ -45,7 +45,39 @@
 <td>
 <a href="-concat.html">Concat</a></td>
 <td>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Concat</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">list2</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code></td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Concat</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">list2</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Concatenates two collections</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-contains.html">Contains</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Contains</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">element</span><span class="symbol">:</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Determines whether a sequence contains a specified element by using the default equality function</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Contains</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">element</span><span class="symbol">:</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">, </span><span class="identifier">comparitor</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">,</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Determines whether a sequence contains a specified element by using the passed equality function <a href="-contains.html#comparitor">comparitor</a></p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-count.html">Count</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Count</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Returns the amount of items in the list</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Count</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">condition</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Returns the amount of items in the list that meet the condition</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-default-if-empty.html">DefaultIfEmpty</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">DefaultIfEmpty</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns the collection or the default value if it is empty</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">DefaultIfEmpty</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">element</span><span class="symbol">:</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns the collection or the passed value if it is empty</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-distinct.html">Distinct</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Distinct</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns a list containing all distinct elements</p>
+</td>
 </tr>
 <tr>
 <td>

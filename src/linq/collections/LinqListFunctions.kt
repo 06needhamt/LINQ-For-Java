@@ -27,6 +27,7 @@ package linq.collections
 
 
 import java.util.*
+import kotlin.internal.getProgressionFinalElement
 
 /**
  * Created by thoma on 02/02/2016.
@@ -207,6 +208,94 @@ fun<ElementType> Contains(list: AbstractList<ElementType>, element: ElementType)
         }
     }
     return false
+}
+/**
+ * Determines whether a sequence contains a specified element by using the passed equality function [comparitor]
+ * @param list the collection to search
+ * @param element the element to check for
+ * @param comparitor the comparison function to use
+ * @return whether the collection contains the item
+ */
+fun<ElementType> Contains(list: AbstractList<ElementType>,element: ElementType,
+                          comparitor: (ElementType,ElementType) -> Boolean ) : Boolean
+{
+    for(item: ElementType in list){
+        if(comparitor.invoke(element,item)){
+            return true
+        }
+    }
+    return false
+}
+
+/**
+ * Returns the amount of items in the list
+ * @param list the list to count
+ * @return the number of items in the list
+ */
+fun<ElementType> Count(list: AbstractList<ElementType>) : Int
+{
+    return list.size
+}
+
+/**
+ * Returns the amount of items in the list that meet the condition
+ * @param list the list to count
+ * @param condition the required condition
+ * @return the number of items in the list that meet the condition
+ */
+fun<ElementType> Count(list: AbstractList<ElementType>,condition: (ElementType) -> Boolean) : Int
+{
+    var count : Int = 0
+    for(item: ElementType in list){
+        if(condition.invoke(item)){
+            count++
+        }
+    }
+    return count
+}
+
+/**
+ * Returns the collection or the default value if it is empty
+ * @param list the list to return
+ * @return the list or the types default value if it is empty
+ */
+fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType>) : AbstractList<ElementType>
+{
+    if(list.isEmpty()){
+        return ArrayList<ElementType>()
+    }
+    return list
+}
+/**
+ * Returns the collection or the passed value if it is empty
+ * @param list the list to return
+ * @param element the value to return if the list is empty
+ * @return the list or the passed value if it is empty
+ */
+fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType>,element: ElementType) : AbstractList<ElementType>
+{
+    if(list.isEmpty()){
+        var def : ArrayList<ElementType> = ArrayList<ElementType>()
+        def.add(element)
+        return def
+    }
+    return list
+}
+
+/**
+ * Returns a list containing all distinct elements
+ * @param list the collection to search
+ * @return a list containing the distinct items
+ */
+fun<ElementType> Distinct(list: AbstractList<ElementType>) : AbstractList<ElementType>
+{
+    var ret : AbstractList<ElementType> = ArrayList<ElementType>()
+    for(item: ElementType in list){
+        if(!Contains(ret,item)) {
+            ret.add(item);
+        }
+    }
+    return ret;
 }
 
 /**
