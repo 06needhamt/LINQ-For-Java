@@ -26,16 +26,6 @@
 </tr>
 <tr>
 <td>
-<a href="-average.html">Average</a></td>
-<td>
-<code><span class="keyword">fun </span><span class="identifier">Average</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">Double</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Double</span></code><p>Returns the average of a list of doubles</p>
-<code><span class="keyword">fun </span><span class="identifier">Average</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">Float</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Float</span></code><p>Returns the average of a list of floats</p>
-<code><span class="keyword">fun </span><span class="identifier">Average</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">Int</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Int</span></code><p>Returns the average of a list of ints</p>
-<code><span class="keyword">fun </span><span class="identifier">Average</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">Long</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Long</span></code><p>Returns the average of a list of longs</p>
-</td>
-</tr>
-<tr>
-<td>
 <a href="-cast.html">Cast</a></td>
 <td>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Cast</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">Any</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Casts all items in the list to the specified type</p>
@@ -77,6 +67,36 @@
 <a href="-distinct.html">Distinct</a></td>
 <td>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Distinct</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns a list containing all distinct elements</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Distinct</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">comparitor</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns a list containing all distinct elements that meet the specified condition</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-element-at.html">ElementAt</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">ElementAt</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">index</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ElementType</span><span class="symbol">?</span></code><p>Returns the element at the specified index in the collection</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-element-at-or-default.html">ElementAtOrDefault</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">ElementAtOrDefault</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">index</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ElementType</span><span class="symbol">?</span></code><p>Returns the element at the specified index in the collection or null if the index is out of range</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-empty.html">Empty</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Empty</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns an empty list of the specified type</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-except.html">Except</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Except</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">list2</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Except</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">list2</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">condition</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns a collection containing items that are not contained in both collections</p>
 </td>
 </tr>
 <tr>
@@ -84,12 +104,14 @@
 <a href="-first.html">First</a></td>
 <td>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">First</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">condition</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ElementType</span><span class="symbol">?</span></code><p>Returns the first Element in the collection that meets the specified condition</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">First</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ElementType</span><span class="symbol">?</span></code><p>Returns the first Element in the collection</p>
 </td>
 </tr>
 <tr>
 <td>
 <a href="-first-or-default.html">FirstOrDefault</a></td>
 <td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">FirstOrDefault</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ElementType</span><span class="symbol">?</span></code><p>Returns the first Element in the collection</p>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">FirstOrDefault</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">condition</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ElementType</span><span class="symbol">?</span></code><p>Returns the first Element in the collection that meets the specified condition</p>
 </td>
 </tr>
@@ -99,6 +121,14 @@
 <td>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">HasAny</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><br/>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">HasAny</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">condition</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Determines whether all elements of a sequence satisfy a condition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-intersect.html">Intersect</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Intersect</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">list2</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Intersect</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">list2</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">condition</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span></code><p>Returns a list containing all of the distinct items in <a href="-intersect.html#list">list</a> that also appear in <a href="-intersect.html#list2">list2</a></p>
 </td>
 </tr>
 </tbody>
