@@ -87,65 +87,65 @@ fun<ElementType> AsAbstractList(list: AbstractList<ElementType>) : AbstractList<
     return list as AbstractList<Any>
 }
 
-/**
- * Returns the average of a list of doubles
- * @param list the list to average
- * @return the average value of the list
- */
-fun Average(list: AbstractList<Double>) : Double
-{
-    var total : Double = 0.0
-    for(item: Double in list){
-        total += item
-    }
-    total /= list.size
-    return total
-}
+///**
+// * Returns the average of a list of doubles
+// * @param list the list to average
+// * @return the average value of the list
+// */
+//fun Average(list: AbstractList<Double>) : Double
+//{
+//    var total : Double = 0.0
+//    for(item: Double in list){
+//        total += item
+//    }
+//    total /= list.size
+//    return total
+//}
+//
+///**
+// * Returns the average of a list of floats
+// * @param list the list to average
+// * @return the average value of the list
+// */
+//fun Average(list: AbstractList<Float>) : Float
+//{
+//    var total : Float = 0.0f
+//    for(item: Float in list){
+//        total += item
+//    }
+//    total /= list.size
+//    return total
+//}
 
-/**
- * Returns the average of a list of floats
- * @param list the list to average
- * @return the average value of the list
- */
-fun Average(list: AbstractList<Float>) : Float
-{
-    var total : Float = 0.0f
-    for(item: Float in list){
-        total += item
-    }
-    total /= list.size
-    return total
-}
+///**
+// * Returns the average of a list of ints
+// * @param list the list to average
+// * @return the average value of the list
+// */
+//fun Average(list: AbstractList<Int>) : Int
+//{
+//    var total : Int = 0
+//    for(item: Int in list){
+//        total += item
+//    }
+//    total /= list.size
+//    return total
+//}
 
-/**
- * Returns the average of a list of ints
- * @param list the list to average
- * @return the average value of the list
- */
-fun Average(list: AbstractList<Int>) : Int
-{
-    var total : Int = 0
-    for(item: Int in list){
-        total += item
-    }
-    total /= list.size
-    return total
-}
-
-/**
- * Returns the average of a list of longs
- * @param list the list to average
- * @return the average value of the list
- */
-fun Average(list: AbstractList<Long>) : Long
-{
-    var total : Long = 0
-    for(item: Long in list){
-        total += item
-    }
-    total /= list.size
-    return total
-}
+///**
+// * Returns the average of a list of longs
+// * @param list the list to average
+// * @return the average value of the list
+// */
+//fun Average(list: AbstractList<Long>) : Long
+//{
+//    var total : Long = 0
+//    for(item: Long in list){
+//        total += item
+//    }
+//    total /= list.size
+//    return total
+//}
 
 
 
@@ -297,6 +297,87 @@ fun<ElementType> Distinct(list: AbstractList<ElementType>) : AbstractList<Elemen
     }
     return ret;
 }
+/**
+ * Returns a list containing all distinct elements that meet the specified condition
+ * @param list the collection to search
+ * @param comparitor the comparison function to use
+ * @return a list containing the distinct items
+ */
+fun<ElementType> Distinct(list: AbstractList<ElementType>
+                          ,comparitor: (ElementType) -> Boolean) : AbstractList<ElementType>
+{
+    var ret : AbstractList<ElementType> = ArrayList<ElementType>()
+    for(item: ElementType in list){
+        if(!Contains(ret,item) && !comparitor.invoke(item)){
+            ret.add(item)
+        }
+    }
+    return ret
+}
+
+/**
+ * Returns the element at the specified index in the collection
+ * @param list the collection
+ * @param index the index of the item to return
+ * @return the item at the specified index in the collection
+ */
+fun<ElementType> ElementAt(list: AbstractList<ElementType>,index: Int) : ElementType?{
+    if(list.size - 1 < index)
+        return null
+    else
+        return list[index]
+}
+
+/**
+ * Returns the element at the specified index in the collection or null if the index is out of range
+ * @param list the collection
+ * @param index the index of the item to return
+ * @return the item at the specified index in the collection
+ */
+fun<ElementType> ElementAtOrDefault(list: AbstractList<ElementType>,index: Int) : ElementType?{
+    return list[index]
+}
+
+/**
+ * Returns an empty list of the specified type
+ * @return an empty list of the specified type
+ */
+fun<ElementType> Empty() : AbstractList<ElementType>{
+    return ArrayList()
+}
+
+/**
+ * Returns a collection containing items that are not contained in both collections
+ * @param list the first collection
+ * @param list2 the second collection
+ * @return  a collection containing items that are not contained in both collections
+ */
+fun<ElementType> Except(list: AbstractList<ElementType>,list2: AbstractList<ElementType>) : AbstractList<ElementType>{
+    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
+    for(item: ElementType in list){
+        if(!Contains(list2,item)){
+            ret.add(item)
+        }
+    }
+    return ret
+}
+
+/**
+ * Returns a collection containing items that are not contained in both collections
+ * @param list the first collection
+ * @param list2 the second collection
+ * @param condition the condition to compare the items with
+ * @return  a collection containing items that are not contained in both collections
+ */
+fun<ElementType> Except(list: AbstractList<ElementType>,list2: AbstractList<ElementType>,condition: (ElementType) -> Boolean) : AbstractList<ElementType>{
+    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
+    for(item: ElementType in list){
+        if(!Contains(list2,item) && condition.invoke(item)){
+            ret.add(item)
+        }
+    }
+    return ret
+}
 
 /**
  * Returns the first Element in the collection that meets the specified condition
@@ -311,7 +392,33 @@ fun<ElementType> First(list: AbstractList<ElementType>, condition: (ElementType)
             return item
         }
     }
-    return null
+    throw IllegalArgumentException("List must contain at least one element");
+}
+
+/**
+ * Returns the first Element in the collection
+ * @param list The collection to search
+ * @return The First element in the collection
+ */
+fun<ElementType> First(list: AbstractList<ElementType>) : ElementType?
+{
+    if(list.size > 0)
+        return ElementAt(list,0)
+    else
+        throw IllegalArgumentException("List must contain at least one element");
+}
+
+/**
+ * Returns the first Element in the collection
+ * @param list The collection to search
+ * @return The First element in the collection
+ */
+fun<ElementType> FirstOrDefault(list: AbstractList<ElementType>) : ElementType?
+{
+    if(list.size > 0)
+        return ElementAt(list,0)
+    else
+        return null
 }
 /** Returns the first Element in the collection that meets the specified condition
  * @param list The collection to search
@@ -326,4 +433,38 @@ fun<ElementType> FirstOrDefault(list: AbstractList<ElementType>, condition: (Ele
         }
     }
     return null
+}
+
+//TODO Add GroupBy
+/**
+ * Returns a list containing all of the distinct items in [list] that also appear in [list2]
+ * @param list the first collection
+ * @param list2 the second collection
+ * @return list containing all of the distinct items in [list] that also appear in [list2]
+ */
+fun<ElementType> Intersect(list: AbstractList<ElementType>,list2: AbstractList<ElementType>) : AbstractList<ElementType>{
+    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
+    for(item: ElementType in Distinct(list)){
+        if(Contains(Distinct(list2),item)){
+            ret.add(item);
+        }
+    }
+    return ret;
+}
+
+/**
+ * Returns a list containing all of the distinct items in [list] that also appear in [list2]
+ * @param list the first collection
+ * @param list2 the second collection
+ * @param condition the condition to compare the elements against
+ * @return list containing all of the distinct items in [list] that also appear in [list2]
+ */
+fun<ElementType> Intersect(list: AbstractList<ElementType>,list2: AbstractList<ElementType>,condition: (ElementType) -> Boolean) : AbstractList<ElementType>{
+    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
+    for(item: ElementType in Distinct(list,condition)){
+        if(Contains(Distinct(list2,condition),item)){
+            ret.add(item);
+        }
+    }
+    return ret;
 }

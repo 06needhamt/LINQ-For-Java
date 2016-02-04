@@ -36,18 +36,34 @@ public class Main {
     {
         System.out.println("Hello World");
         ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Integer> list2 = new ArrayList<Integer>();
         list.add(10);
         list.add(2);
         list.add(5);
+        list2.add(7);
+        list2.add(4);
+        list2.add(5);
+        list = new ArrayList<>(LinqListFunctionsKt.Concat(list,list2));
         try {
             int result = LinqListFunctionsKt.First(list, (x) -> x == 5);
             boolean equal = LinqListFunctionsKt.All(list,(x) -> x == 10);
             boolean hasany = LinqListFunctionsKt.HasAny(list);
             boolean hasanyCond = LinqListFunctionsKt.HasAny(list, (x) -> x == 12);
+            boolean contains = LinqListFunctionsKt.Contains(list,3);
+            int count = LinqListFunctionsKt.Count(list);
+            System.out.println("There are " + count + " items in the list");
+            list2 = new ArrayList<>(LinqListFunctionsKt.Distinct(list));
+            count = LinqListFunctionsKt.Count(list2);
+            System.out.println("There are " + count + " distinct items in the list");
+            list2 = new ArrayList<>(LinqListFunctionsKt.Intersect(list,list2));
+            count = LinqListFunctionsKt.Count(list2);
+            System.out.println("There are " + count + " distinct items in both lists");
             System.out.println("First item in the list is: " + list.indexOf(result));
             System.out.println("Are All items in the list equal: " + equal);
             System.out.println("Does the list contain any items: " + hasany);
             System.out.println("Does the list contain any items that meet this condition: " + hasanyCond);
+            System.out.println("Does the list contain any items equal to 3: " + contains);
+
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);
