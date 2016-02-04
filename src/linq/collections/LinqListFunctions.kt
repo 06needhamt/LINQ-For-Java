@@ -83,85 +83,99 @@ fun<ElementType> HasAny(list: AbstractList<ElementType>, condition: (ElementType
  * @param list The collection to convert
  * @return the inputted list as an AbstractList<Any>
  */
-fun<ElementType> AsAbstractList(list: AbstractList<ElementType>) : AbstractList<Any>{
-    return list as AbstractList<Any>
+fun<ElementType> AsAbstractList(list: AbstractList<ElementType>) : AbstractList<ElementType>{
+    return list;
 }
 
-///**
-// * Returns the average of a list of doubles
-// * @param list the list to average
-// * @return the average value of the list
-// */
-//fun Average(list: AbstractList<Double>) : Double
-//{
-//    var total : Double = 0.0
-//    for(item: Double in list){
-//        total += item
-//    }
-//    total /= list.size
-//    return total
-//}
-//
-///**
-// * Returns the average of a list of floats
-// * @param list the list to average
-// * @return the average value of the list
-// */
-//fun Average(list: AbstractList<Float>) : Float
-//{
-//    var total : Float = 0.0f
-//    for(item: Float in list){
-//        total += item
-//    }
-//    total /= list.size
-//    return total
-//}
+/**
+ * Returns the average of a list of doubles
+ * @param list the list to average
+ * @return the average value of the list
+ */
+fun<ElementType: Double> Average(list: AbstractList<ElementType>) : ElementType
+{
+    var total : Double = 0.0
+    for(item: ElementType in list){
+        total += item
+    }
+    total /= list.size
+    return total as ElementType
+}
 
-///**
-// * Returns the average of a list of ints
-// * @param list the list to average
-// * @return the average value of the list
-// */
-//fun Average(list: AbstractList<Int>) : Int
-//{
-//    var total : Int = 0
-//    for(item: Int in list){
-//        total += item
-//    }
-//    total /= list.size
-//    return total
-//}
+/**
+ * Returns the average of a list of floats
+ * @param list the list to average
+ * @return the average value of the list
+ */
+fun<ElementType : Float> Average(list: AbstractList<ElementType>) : ElementType
+{
+    var total : Float = 0.0f
+    for(item: ElementType in list){
+        total += item
+    }
+    total /= list.size
+    return total as ElementType
+}
 
-///**
-// * Returns the average of a list of longs
-// * @param list the list to average
-// * @return the average value of the list
-// */
-//fun Average(list: AbstractList<Long>) : Long
-//{
-//    var total : Long = 0
-//    for(item: Long in list){
-//        total += item
-//    }
-//    total /= list.size
-//    return total
-//}
+/**
+ * Returns the average of a list of ints
+ * @param list the list to average
+ * @return the average value of the list
+ */
+fun<ElementType : Int> Average(list: AbstractList<ElementType>) : ElementType
+{
+    var total : Int = 0
+    for(item: ElementType in list){
+        total += item
+    }
+    total /= list.size
+    return total as ElementType
+}
 
+/**
+ * Returns the average of a list of longs
+ * @param list the list to average
+ * @return the average value of the list
+ */
+fun<ElementType : Long> Average(list: AbstractList<ElementType>) : ElementType
+{
+    var total : Long = 0L
+    for(item: ElementType in list){
+        total += item
+    }
+    total = list.size / total
+    return total as ElementType
+}
 
+/**
+ * Returns the average of a list of shorts
+ * @param list the list to average
+ * @return the average value of the list
+ */
+fun<ElementType : Short> Average(list: AbstractList<ElementType>) : ElementType
+{
+    var total : Int = 0
+    for(item: ElementType in list){
+        total += (item as Short)
+    }
+    total /= list.size
+    return total as ElementType
+}
 
+////TODO Report Error
 ///**
 // * Returns the average of a list of shorts
 // * @param list the list to average
 // * @return the average value of the list
 // */
-//fun Average(list: AbstractList<Short>) : Short
+//fun<ElementType : Short> Average(list: AbstractList<ElementType>) : ElementType
 //{
-//    var total : Short = 0
-//    for(item: Short in list){
-//        total += item
+//    var total : Short = 0 as Short
+//    for(item: ElementType in list){
+//        total += (item as Short)
 //    }
-//    total /= list.size as Short
-//    return total
+//    total /= list.size
+//    return total as ElementType
 //}
 
 /**
