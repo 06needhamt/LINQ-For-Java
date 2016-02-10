@@ -27,7 +27,6 @@ package linq.collections
 
 
 import java.util.*
-import kotlin.internal.getProgressionFinalElement
 
 /**
  * Created by thoma on 02/02/2016.
