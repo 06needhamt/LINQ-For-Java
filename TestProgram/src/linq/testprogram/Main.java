@@ -25,6 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package linq.testprogram;
 import linq.collections.LinqListFunctionsKt;
 
+
 import java.util.ArrayList;
 
 /**
@@ -37,7 +38,7 @@ public class Main {
         System.out.println("Hello World");
         ArrayList<Integer> list = new ArrayList<Integer>();
         ArrayList<Integer> list2 = new ArrayList<Integer>();
-        list.add(10);
+        list.add(10000);
         list.add(2);
         list.add(5);
         list2.add(7);
@@ -63,8 +64,9 @@ public class Main {
             System.out.println("Does the list contain any items: " + hasany);
             System.out.println("Does the list contain any items that meet this condition: " + hasanyCond);
             System.out.println("Does the list contain any items equal to 3: " + contains);
+            //TODO Fix ME
             int average = LinqListFunctionsKt.Average(list2);
-            System.out.println("The average value in the list is :" + average);
+            System.out.println("The average value in the list is : " + average);
 
         }
         catch(Exception ex) {

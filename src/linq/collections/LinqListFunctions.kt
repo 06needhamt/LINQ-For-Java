@@ -87,78 +87,59 @@ fun<ElementType> AsAbstractList(list: AbstractList<ElementType>) : AbstractList<
 }
 
 /**
- * Returns the average of a list of doubles
- * @param list the list to average
- * @return the average value of the list
- */
-fun<ElementType: Double> Average(list: AbstractList<ElementType>) : ElementType
-{
-    var total : Double = 0.0
-    for(item: ElementType in list){
-        total += item
-    }
-    total /= list.size
-    return total as ElementType
-}
-
-/**
- * Returns the average of a list of floats
- * @param list the list to average
- * @return the average value of the list
- */
-fun<ElementType : Float> Average(list: AbstractList<ElementType>) : ElementType
-{
-    var total : Float = 0.0f
-    for(item: ElementType in list){
-        total += item
-    }
-    total /= list.size
-    return total as ElementType
-}
-
-/**
  * Returns the average of a list of ints
  * @param list the list to average
  * @return the average value of the list
  */
-fun<ElementType : Int> Average(list: AbstractList<ElementType>) : ElementType
+fun<ElementType> Average(list: AbstractList<ElementType?>) : ElementType?
 {
-    var total : Int = 0
-    for(item: ElementType in list){
-        total += item
+    var dtotal : Double = 0.0
+    var ftotal : Float = 0.0f
+    var itotal : Int = 0
+    var ltotal : Long = 0L
+    var stotal : Short = 0
+    if(list.size == 0)
+    {
+        println("Cannot take average of 0 elements")
+        return null;
     }
-    total /= list.size
-    return total as ElementType
-}
+    for(item: Any? in list){
+        if(item is Double) {
+            dtotal += item
+            dtotal /= list.size
+        }
+        else if(item is Float){
+            ftotal += item
+            ftotal /= list.size
+        }
+        else if(item is Int){
+            itotal += item
+            itotal /= list.size
+        }
+        else if(item is Long){
+            ltotal += item
+            ltotal /= list.size
+        }
+        else if(item is Short){
+            stotal = (stotal + item) as Short;
+            stotal = (stotal / list.size) as Short;
+        }
+        else
+            println("Cannot Take average of type " + item!!.javaClass.toString())
+    }
+    if(list[0] is Double)
+        return dtotal as ElementType?
+    else if(list[0] is Float)
+        return ftotal as ElementType?
+    else if(list[0] is Int)
+        return itotal as ElementType?
+    else if(list[0] is Long)
+        return ltotal as ElementType?
+    else if(list[0] is Short)
+        return stotal as ElementType?
+    else
+        return null
 
-/**
- * Returns the average of a list of longs
- * @param list the list to average
- * @return the average value of the list
- */
-fun<ElementType : Long> Average(list: AbstractList<ElementType>) : ElementType
-{
-    var total : Long = 0L
-    for(item: ElementType in list){
-        total += item
-    }
-    total = list.size / total
-    return total as ElementType
-}
-
-/**
- * Returns the average of a list of shorts
- * @param list the list to average
- * @return the average value of the list
- */
-fun<ElementType : Short> Average(list: AbstractList<ElementType>) : ElementType
-{
-    var total : Int = 0
-    for(item: ElementType in list){
-        total += (item as Short)
-    }
-    total /= list.size
-    return total as ElementType
 }
 /**
  * Casts all items in the list to the specified type
@@ -463,4 +444,24 @@ fun<ElementType> Intersect(list: AbstractList<ElementType>,list2: AbstractList<E
         }
     }
     return ret;
+}
+
+//TODO Implement Join
+/**
+ * Returns the last item contained in [list]
+ * @param list The Collection
+ * @return the last item contained in [list]
+ */
+fun<ElementType> Last(list: AbstractList<ElementType?>) : ElementType?{
+    return list[list.count() - 1]
+}
+
+fun<ElementType> Last(list: AbstractList<ElementType?>,condition: (ElementType) -> Boolean) : ElementType?{
+    var lastMatch : ElementType? = null;
+    for(item: ElementType? in list){
+        if(item != null && condition.invoke(item)){
+            lastMatch = item;
+        }
+    }
+    return lastMatch;
 }
