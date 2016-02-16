@@ -87,11 +87,11 @@ fun<ElementType> AsAbstractList(list: AbstractList<ElementType>) : AbstractList<
 }
 
 /**
- * Returns the average of a list of ints
+ * Returns the average of a list of numbers
  * @param list the list to average
- * @return the average value of the list
+ * @return the average value of the numbers
  */
-fun<ElementType> Average(list: AbstractList<ElementType?>) : ElementType?
+fun<ElementType : Number> Average(list: AbstractList<ElementType?>) : ElementType?
 {
     var dtotal : Double = 0.0
     var ftotal : Float = 0.0f
