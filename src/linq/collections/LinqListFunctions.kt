@@ -27,9 +27,10 @@ package linq.collections
 
 
 import java.util.*
+import kotlin.jvm.internal.iterator
 
 /**
- * Created by thoma on 02/02/2016.
+ * Created by Tom Needham on 02/02/2016.
  */
 
 /**
@@ -38,9 +39,9 @@ import java.util.*
  * @param condition a lambda that returns true or false to indicate whether all elements meet the condition
  * @return whether all elements meet the condition
  */
-fun<ElementType> All(list: AbstractList<ElementType>, condition: (ElementType) -> Boolean) : Boolean
+fun<ElementType> All(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : Boolean
 {
-    for(item: ElementType in list){
+    for(item: ElementType? in list){
         if(!condition.invoke(item)){
             return false
         }
@@ -53,7 +54,7 @@ fun<ElementType> All(list: AbstractList<ElementType>, condition: (ElementType) -
  * @param list The collection to search
  * @return whether the collection contains any elements
  **/
-fun<ElementType> HasAny(list: AbstractList<ElementType>) : Boolean
+fun<ElementType> HasAny(list: AbstractList<ElementType?>) : Boolean
 {
     return list.size > 0
 }
@@ -64,12 +65,12 @@ fun<ElementType> HasAny(list: AbstractList<ElementType>) : Boolean
  * that meet the specified condition
  * @return whether the collection contains any elements that meet the specified condition
  **/
-fun<ElementType> HasAny(list: AbstractList<ElementType>, condition: (ElementType) -> Boolean) : Boolean
+fun<ElementType> HasAny(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : Boolean
 {
     if(list.size == 0){
         return false
     }
-    for(item: ElementType in list){
+    for(item: ElementType? in list){
         if(condition.invoke(item)){
             return true
         }
@@ -82,7 +83,7 @@ fun<ElementType> HasAny(list: AbstractList<ElementType>, condition: (ElementType
  * @param list The collection to convert
  * @return the inputted list as an AbstractList<Any>
  */
-fun<ElementType> AsAbstractList(list: AbstractList<ElementType>) : AbstractList<ElementType>{
+fun<ElementType> AsAbstractList(list: AbstractList<ElementType?>) : AbstractList<ElementType?>{
     return list;
 }
 
@@ -121,11 +122,11 @@ fun<ElementType : Number> Average(list: AbstractList<ElementType?>) : ElementTyp
             ltotal /= list.size
         }
         else if(item is Short){
-            stotal = (stotal + item) as Short;
-            stotal = (stotal / list.size) as Short;
+            stotal = (stotal + item).toShort();
+            stotal = (stotal / list.size).toShort();
         }
         else
-            println("Cannot Take average of type " + item!!.javaClass.toString())
+            println("ERROR: Cannot Take average of type " + item!!.javaClass.toString())
     }
     if(list[0] is Double)
         return dtotal as ElementType?
@@ -146,10 +147,10 @@ fun<ElementType : Number> Average(list: AbstractList<ElementType?>) : ElementTyp
  * @param list the collection to cast
  * @return a collection containing the casted values
  */
-fun<ElementType> Cast(list: AbstractList<Any>) : AbstractList<ElementType>
+fun<ElementType> Cast(list: AbstractList<Any?>) : AbstractList<ElementType?>
 {
-    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
-    for(item: Any in list){
+    var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: Any? in list){
         if(item as ElementType? != null){
             ret.add(item)
         }
@@ -163,9 +164,9 @@ fun<ElementType> Cast(list: AbstractList<Any>) : AbstractList<ElementType>
  * @param list2 the second list
  * @return the Concatenated collection
  */
-fun<ElementType> Concat(list: AbstractList<ElementType>, list2: AbstractList<ElementType>) : AbstractList<ElementType>
+fun<ElementType> Concat(list: AbstractList<ElementType?>, list2: AbstractList<ElementType?>) : AbstractList<ElementType?>
 {
-    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
+    var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
     ret.addAll(list)
     ret.addAll(list2)
     return ret;
@@ -177,9 +178,9 @@ fun<ElementType> Concat(list: AbstractList<ElementType>, list2: AbstractList<Ele
  * @param element the element to check for
  * @return whether the collection contains the item
  */
-fun<ElementType> Contains(list: AbstractList<ElementType>, element: ElementType) : Boolean
+fun<ElementType> Contains(list: AbstractList<ElementType?>, element: ElementType?) : Boolean
 {
-    for(item: ElementType in list){
+    for(item: ElementType? in list){
         if(element?.equals(item)!!){
             return true
         }
@@ -193,10 +194,10 @@ fun<ElementType> Contains(list: AbstractList<ElementType>, element: ElementType)
  * @param comparitor the comparison function to use
  * @return whether the collection contains the item
  */
-fun<ElementType> Contains(list: AbstractList<ElementType>,element: ElementType,
-                          comparitor: (ElementType,ElementType) -> Boolean ) : Boolean
+fun<ElementType> Contains(list: AbstractList<ElementType?>,element: ElementType?,
+                          comparitor: (ElementType?,ElementType?) -> Boolean ) : Boolean
 {
-    for(item: ElementType in list){
+    for(item: ElementType? in list){
         if(comparitor.invoke(element,item)){
             return true
         }
@@ -209,7 +210,7 @@ fun<ElementType> Contains(list: AbstractList<ElementType>,element: ElementType,
  * @param list the list to count
  * @return the number of items in the list
  */
-fun<ElementType> Count(list: AbstractList<ElementType>) : Int
+fun<ElementType> Count(list: AbstractList<ElementType?>) : Int
 {
     return list.size
 }
@@ -220,10 +221,10 @@ fun<ElementType> Count(list: AbstractList<ElementType>) : Int
  * @param condition the required condition
  * @return the number of items in the list that meet the condition
  */
-fun<ElementType> Count(list: AbstractList<ElementType>,condition: (ElementType) -> Boolean) : Int
+fun<ElementType> Count(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : Int
 {
     var count : Int = 0
-    for(item: ElementType in list){
+    for(item: ElementType? in list){
         if(condition.invoke(item)){
             count++
         }
@@ -236,10 +237,10 @@ fun<ElementType> Count(list: AbstractList<ElementType>,condition: (ElementType) 
  * @param list the list to return
  * @return the list or the types default value if it is empty
  */
-fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType>) : AbstractList<ElementType>
+fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType?>) : AbstractList<ElementType?>
 {
     if(list.isEmpty()){
-        return ArrayList<ElementType>()
+        return ArrayList<ElementType?>()
     }
     return list
 }
@@ -249,10 +250,10 @@ fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType>) : AbstractList<
  * @param element the value to return if the list is empty
  * @return the list or the passed value if it is empty
  */
-fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType>,element: ElementType) : AbstractList<ElementType>
+fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType?>,element: ElementType?) : AbstractList<ElementType?>
 {
     if(list.isEmpty()){
-        var def : ArrayList<ElementType> = ArrayList<ElementType>()
+        var def : ArrayList<ElementType?> = ArrayList<ElementType?>()
         def.add(element)
         return def
     }
@@ -264,10 +265,10 @@ fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType>,element: Element
  * @param list the collection to search
  * @return a list containing the distinct items
  */
-fun<ElementType> Distinct(list: AbstractList<ElementType>) : AbstractList<ElementType>
+fun<ElementType> Distinct(list: AbstractList<ElementType?>) : AbstractList<ElementType?>
 {
-    var ret : AbstractList<ElementType> = ArrayList<ElementType>()
-    for(item: ElementType in list){
+    var ret : AbstractList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
         if(!Contains(ret,item)) {
             ret.add(item);
         }
@@ -280,11 +281,11 @@ fun<ElementType> Distinct(list: AbstractList<ElementType>) : AbstractList<Elemen
  * @param comparitor the comparison function to use
  * @return a list containing the distinct items
  */
-fun<ElementType> Distinct(list: AbstractList<ElementType>
-                          ,comparitor: (ElementType) -> Boolean) : AbstractList<ElementType>
+fun<ElementType> Distinct(list: AbstractList<ElementType?>
+                          ,comparitor: (ElementType?) -> Boolean) : AbstractList<ElementType?>
 {
-    var ret : AbstractList<ElementType> = ArrayList<ElementType>()
-    for(item: ElementType in list){
+    var ret : AbstractList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
         if(!Contains(ret,item) && !comparitor.invoke(item)){
             ret.add(item)
         }
@@ -298,7 +299,7 @@ fun<ElementType> Distinct(list: AbstractList<ElementType>
  * @param index the index of the item to return
  * @return the item at the specified index in the collection
  */
-fun<ElementType> ElementAt(list: AbstractList<ElementType>,index: Int) : ElementType?{
+fun<ElementType> ElementAt(list: AbstractList<ElementType?>,index: Int) : ElementType?{
     if(list.size - 1 < index)
         return null
     else
@@ -311,7 +312,7 @@ fun<ElementType> ElementAt(list: AbstractList<ElementType>,index: Int) : Element
  * @param index the index of the item to return
  * @return the item at the specified index in the collection
  */
-fun<ElementType> ElementAtOrDefault(list: AbstractList<ElementType>,index: Int) : ElementType?{
+fun<ElementType> ElementAtOrDefault(list: AbstractList<ElementType?>,index: Int) : ElementType?{
     return list[index]
 }
 
@@ -319,7 +320,7 @@ fun<ElementType> ElementAtOrDefault(list: AbstractList<ElementType>,index: Int) 
  * Returns an empty list of the specified type
  * @return an empty list of the specified type
  */
-fun<ElementType> Empty() : AbstractList<ElementType>{
+fun<ElementType> Empty() : AbstractList<ElementType?>{
     return ArrayList()
 }
 
@@ -329,9 +330,9 @@ fun<ElementType> Empty() : AbstractList<ElementType>{
  * @param list2 the second collection
  * @return  a collection containing items that are not contained in both collections
  */
-fun<ElementType> Except(list: AbstractList<ElementType>,list2: AbstractList<ElementType>) : AbstractList<ElementType>{
-    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
-    for(item: ElementType in list){
+fun<ElementType> Except(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>) : AbstractList<ElementType?>{
+    var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
         if(!Contains(list2,item)){
             ret.add(item)
         }
@@ -346,9 +347,9 @@ fun<ElementType> Except(list: AbstractList<ElementType>,list2: AbstractList<Elem
  * @param condition the condition to compare the items with
  * @return  a collection containing items that are not contained in both collections
  */
-fun<ElementType> Except(list: AbstractList<ElementType>,list2: AbstractList<ElementType>,condition: (ElementType) -> Boolean) : AbstractList<ElementType>{
-    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
-    for(item: ElementType in list){
+fun<ElementType> Except(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : AbstractList<ElementType?>{
+    var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
         if(!Contains(list2,item) && condition.invoke(item)){
             ret.add(item)
         }
@@ -362,9 +363,9 @@ fun<ElementType> Except(list: AbstractList<ElementType>,list2: AbstractList<Elem
  * @param condition a lambda that returns true or false to indicate whether the condition is met
  * @return The First element that matches the condition
  */
-fun<ElementType> First(list: AbstractList<ElementType>, condition: (ElementType) -> Boolean) : ElementType?
+fun<ElementType> First(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : ElementType?
 {
-    for(item: ElementType in list){
+    for(item: ElementType? in list){
         if(condition.invoke(item)){
             return item
         }
@@ -377,7 +378,7 @@ fun<ElementType> First(list: AbstractList<ElementType>, condition: (ElementType)
  * @param list The collection to search
  * @return The First element in the collection
  */
-fun<ElementType> First(list: AbstractList<ElementType>) : ElementType?
+fun<ElementType> First(list: AbstractList<ElementType?>) : ElementType?
 {
     if(list.size > 0)
         return ElementAt(list,0)
@@ -390,7 +391,7 @@ fun<ElementType> First(list: AbstractList<ElementType>) : ElementType?
  * @param list The collection to search
  * @return The First element in the collection
  */
-fun<ElementType> FirstOrDefault(list: AbstractList<ElementType>) : ElementType?
+fun<ElementType> FirstOrDefault(list: AbstractList<ElementType?>) : ElementType?
 {
     if(list.size > 0)
         return ElementAt(list,0)
@@ -402,9 +403,9 @@ fun<ElementType> FirstOrDefault(list: AbstractList<ElementType>) : ElementType?
  * @param condition a lambda that returns true or false to indicate whether the condition is met
  * @return The First element that matches the condition or null
  */
-fun<ElementType> FirstOrDefault(list: AbstractList<ElementType>, condition: (ElementType) -> Boolean) : ElementType?
+fun<ElementType> FirstOrDefault(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : ElementType?
 {
-    for(item: ElementType in list){
+    for(item: ElementType? in list){
         if(condition.invoke(item)){
             return item
         }
@@ -419,9 +420,9 @@ fun<ElementType> FirstOrDefault(list: AbstractList<ElementType>, condition: (Ele
  * @param list2 the second collection
  * @return list containing all of the distinct items in [list] that also appear in [list2]
  */
-fun<ElementType> Intersect(list: AbstractList<ElementType>,list2: AbstractList<ElementType>) : AbstractList<ElementType>{
-    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
-    for(item: ElementType in Distinct(list)){
+fun<ElementType> Intersect(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>) : AbstractList<ElementType?>{
+    var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in Distinct(list)){
         if(Contains(Distinct(list2),item)){
             ret.add(item);
         }
@@ -436,9 +437,9 @@ fun<ElementType> Intersect(list: AbstractList<ElementType>,list2: AbstractList<E
  * @param condition the condition to compare the elements against
  * @return list containing all of the distinct items in [list] that also appear in [list2]
  */
-fun<ElementType> Intersect(list: AbstractList<ElementType>,list2: AbstractList<ElementType>,condition: (ElementType) -> Boolean) : AbstractList<ElementType>{
-    var ret : ArrayList<ElementType> = ArrayList<ElementType>()
-    for(item: ElementType in Distinct(list,condition)){
+fun<ElementType> Intersect(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : AbstractList<ElementType?>{
+    var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in Distinct(list,condition)){
         if(Contains(Distinct(list2,condition),item)){
             ret.add(item);
         }
@@ -456,7 +457,7 @@ fun<ElementType> Last(list: AbstractList<ElementType?>) : ElementType?{
     return list[list.count() - 1]
 }
 
-fun<ElementType> Last(list: AbstractList<ElementType?>,condition: (ElementType) -> Boolean) : ElementType?{
+fun<ElementType> Last(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : ElementType?{
     var lastMatch : ElementType? = null;
     for(item: ElementType? in list){
         if(item != null && condition.invoke(item)){
@@ -464,4 +465,272 @@ fun<ElementType> Last(list: AbstractList<ElementType?>,condition: (ElementType) 
         }
     }
     return lastMatch;
+}
+
+/**
+ * Returns the Largest item in the list
+ * @param list the list to search
+ * @return the Largest item in the list
+ */
+fun<ElementType : Number> Max(list: AbstractList<ElementType?>) : ElementType?{
+    var dmax : Double = Double.MIN_VALUE
+    var fmax : Float = Float.MIN_VALUE
+    var imax : Int = Int.MIN_VALUE
+    var lmax : Long = Long.MIN_VALUE
+    var smax : Short = Short.MIN_VALUE
+    
+    if(list.size == 0)
+    {
+        println("Cannot take maximum of 0 elements")
+        return null;
+    }
+    for(item: ElementType? in list){
+        if(item is Double){
+            if(item > dmax)
+                dmax = item.toDouble()
+        }
+        else if(item is Float){
+            if(item > fmax)
+                fmax = item.toFloat()
+        }
+        else if(item is Int){
+            if (item > imax)
+                imax = item.toInt()
+        }
+        else if (item is Long){
+            if(item > lmax)
+                lmax = item.toLong()
+        }
+        else if(item is Short){
+            if(item > smax)
+                smax.toShort()
+        }
+        else
+            println("ERROR: Cannot Take maximum of type " + item!!.javaClass.toString())
+    }
+    if(list[0] is Double)
+        return dmax as ElementType?
+    else if(list[0] is Float)
+        return fmax as ElementType?
+    else if(list[0] is Int)
+        return imax as ElementType?
+    else if(list[0] is Long)
+        return lmax as ElementType?
+    else if(list[0] is Short)
+        return smax as ElementType?
+    else
+        return null
+}
+
+/**
+ * Returns the maximum double value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the maximum double value in the list based on [comparitor]
+ */
+fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Double) : Double{
+    var max : Double = 0.0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) > max )
+                max = item.toDouble()
+        }
+    }
+    return max;
+}
+/**
+ * Returns the maximum float value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the maximum float value in the list based on [comparitor]
+ */fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Float) : Float{
+    var max : Float = 0.0f
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) > max )
+                max = item.toFloat()
+        }
+    }
+    return max;
+}
+
+/**
+ * Returns the maximum Int value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the maximum Int value in the list based on [comparitor]
+ */fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Int) : Int{
+    var max : Int = 0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) > max )
+                max = item.toInt()
+        }
+    }
+    return max;
+}
+
+/**
+ * Returns the maximum Long value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the maximum Long value in the list based on [comparitor]
+ */fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Long) : Long{
+    var max : Long = 0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) > max )
+                max = item.toLong()
+        }
+    }
+    return max;
+}
+
+/**
+ * Returns the maximum Short value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the maximum Short value in the list based on [comparitor]
+ */fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Short) : Short{
+    var max : Short = 0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) > max )
+                max = item.toShort()
+        }
+    }
+    return max;
+}
+/**
+ * Returns the Smallest item in the list
+ * @param list the list to search
+ * @return the Smallest item in the list
+ */
+fun<ElementType : Number> Min(list: AbstractList<ElementType?>) : ElementType?{
+    var dmin : Double = Double.MAX_VALUE
+    var fmin : Float = Float.MAX_VALUE
+    var imin : Int = Int.MAX_VALUE
+    var lmin : Long = Long.MAX_VALUE
+    var smin : Short = Short.MAX_VALUE
+    if(list.size == 0)
+    {
+        println("Cannot take minimum of 0 elements")
+        return null;
+    }
+    for(item: ElementType? in list){
+        if(item is Double){
+            if(item < dmin)
+                dmin = item.toDouble()
+        }
+        else if(item is Float){
+            if(item < fmin)
+                fmin = item.toFloat()
+        }
+        else if(item is Int){
+            if (item < imin)
+                imin = item.toInt()
+        }
+        else if (item is Long){
+            if(item < lmin)
+                lmin = item.toLong()
+        }
+        else if(item is Short){
+            if(item < smin)
+                smin.toShort()
+        }
+        else
+            println("ERROR: Cannot Take minimum of type " + item!!.javaClass.toString())
+    }
+    if(list[0] is Double)
+        return dmin as ElementType?
+    else if(list[0] is Float)
+        return fmin as ElementType?
+    else if(list[0] is Int)
+        return imin as ElementType?
+    else if(list[0] is Long)
+        return lmin as ElementType?
+    else if(list[0] is Short)
+        return smin as ElementType?
+    else
+        return null
+}
+
+/**
+ * Returns the minimum double value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the minimum double value in the list based on [comparitor]
+ */
+fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Double) : Double{
+    var min : Double = 0.0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) < min )
+                min = item.toDouble()
+        }
+    }
+    return min;
+}
+/**
+ * Returns the minimum float value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the minimum float value in the list based on [comparitor]
+ */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Float) : Float{
+    var min : Float = 0.0f
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) < min )
+                min = item.toFloat()
+        }
+    }
+    return min;
+}
+
+/**
+ * Returns the minimum Int value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the minimum Int value in the list based on [comparitor]
+ */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Int) : Int{
+    var min : Int = 0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) < min )
+                min = item.toInt()
+        }
+    }
+    return min;
+}
+
+/**
+ * Returns the minimum Long value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the minimum Long value in the list based on [comparitor]
+ */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Long) : Long{
+    var min : Long = 0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) < min )
+                min = item.toLong()
+        }
+    }
+    return min;
+}
+
+/**
+ * Returns the minimum Short value in the list based on [comparitor]
+ * @param list the list to search
+ * @param comparitor the comparison function to use
+ * @return the minimum Short value in the list based on [comparitor]
+ */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Short) : Short{
+    var min : Short = 0
+    for(item: ElementType? in list){
+        if(item is Number) {
+            if (comparitor.invoke(item) < min )
+                min = item.toShort()
+        }
+    }
+    return min;
 }

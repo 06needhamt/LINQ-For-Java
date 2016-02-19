@@ -64,10 +64,14 @@ public class Main {
             System.out.println("Does the list contain any items: " + hasany);
             System.out.println("Does the list contain any items that meet this condition: " + hasanyCond);
             System.out.println("Does the list contain any items equal to 3: " + contains);
-            //TODO Fix ME
             int average = LinqListFunctionsKt.Average(list2);
+            int last = LinqListFunctionsKt.Last(list2);
+            int max = LinqListFunctionsKt.Max(list2);
+            int min = LinqListFunctionsKt.Min(list2);
             System.out.println("The average value in the list is : " + average);
-
+            System.out.println("The Last item in the list is : " + last);
+            System.out.println("The Largest item in the list is : " + max);
+            System.out.println("The Smallest item in the list is : " + min);
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);
