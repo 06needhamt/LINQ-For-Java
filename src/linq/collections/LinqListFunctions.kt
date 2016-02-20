@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package linq.collections
 
 
+import java.lang.reflect.ParameterizedType
 import java.util.*
 import kotlin.jvm.internal.iterator
 
@@ -34,9 +35,16 @@ import kotlin.jvm.internal.iterator
  */
 
 /**
- * Determines whether all elements of a sequence satisfy a condition.
+ * Returns a class name of a type parameter [T]
+ * @return The class name of type parameter [T]
+ */
+inline fun <reified T : Any> GetType() = T::class.java.simpleName
+
+//TODO Implement Aggregate
+/**
+ * Determines whether all elements of a sequence satisfy a [condition].
  * @param list The collection to search
- * @param condition a lambda that returns true or false to indicate whether all elements meet the condition
+ * @param condition a lambda that returns true or false to indicate whether all elements meet the [condition]
  * @return whether all elements meet the condition
  */
 fun<ElementType> All(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : Boolean
@@ -59,11 +67,11 @@ fun<ElementType> HasAny(list: AbstractList<ElementType?>) : Boolean
     return list.size > 0
 }
 /**
- * Determines whether all elements of a sequence satisfy a condition.
+ * Determines whether all elements of a sequence satisfy a [condition].
  * @param list The collection to search
  * @param condition a lambda that returns true or false to indicate whether the collection contains any elements
- * that meet the specified condition
- * @return whether the collection contains any elements that meet the specified condition
+ * that meet the specified [condition]
+ * @return whether the collection contains any elements that meet the specified [condition]
  **/
 fun<ElementType> HasAny(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : Boolean
 {
@@ -79,9 +87,9 @@ fun<ElementType> HasAny(list: AbstractList<ElementType?>, condition: (ElementTyp
 }
 
 /**
- * Retuns the inputted list as an AbstractList<Any>
+ * Retuns the inputted list as an [AbstractList<Any>]
  * @param list The collection to convert
- * @return the inputted list as an AbstractList<Any>
+ * @return the inputted list as an [AbstractList<Any>]
  */
 fun<ElementType> AsAbstractList(list: AbstractList<ElementType?>) : AbstractList<ElementType?>{
     return list;
@@ -173,7 +181,7 @@ fun<ElementType> Concat(list: AbstractList<ElementType?>, list2: AbstractList<El
 }
 
 /**
- * Determines whether a sequence contains a specified element by using the default equality function
+ * Determines whether a sequence contains a specified [element] by using the default equality function
  * @param list the collection to search
  * @param element the element to check for
  * @return whether the collection contains the item
@@ -206,9 +214,9 @@ fun<ElementType> Contains(list: AbstractList<ElementType?>,element: ElementType?
 }
 
 /**
- * Returns the amount of items in the list
+ * Returns the amount of items in the [list]
  * @param list the list to count
- * @return the number of items in the list
+ * @return the number of items in the [list]
  */
 fun<ElementType> Count(list: AbstractList<ElementType?>) : Int
 {
@@ -216,10 +224,10 @@ fun<ElementType> Count(list: AbstractList<ElementType?>) : Int
 }
 
 /**
- * Returns the amount of items in the list that meet the condition
+ * Returns the amount of items in the list that meet the [condition]
  * @param list the list to count
  * @param condition the required condition
- * @return the number of items in the list that meet the condition
+ * @return the number of items in the list that meet the [condition]
  */
 fun<ElementType> Count(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : Int
 {
@@ -245,10 +253,10 @@ fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType?>) : AbstractList
     return list
 }
 /**
- * Returns the collection or the passed value if it is empty
+ * Returns the collection or [element] if it is empty
  * @param list the list to return
  * @param element the value to return if the list is empty
- * @return the list or the passed value if it is empty
+ * @return the List or [element] if it is empty
  */
 fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType?>,element: ElementType?) : AbstractList<ElementType?>
 {
@@ -263,7 +271,7 @@ fun<ElementType> DefaultIfEmpty(list: AbstractList<ElementType?>,element: Elemen
 /**
  * Returns a list containing all distinct elements
  * @param list the collection to search
- * @return a list containing the distinct items
+ * @return a [AbstractList] containing the distinct items
  */
 fun<ElementType> Distinct(list: AbstractList<ElementType?>) : AbstractList<ElementType?>
 {
@@ -276,10 +284,10 @@ fun<ElementType> Distinct(list: AbstractList<ElementType?>) : AbstractList<Eleme
     return ret;
 }
 /**
- * Returns a list containing all distinct elements that meet the specified condition
+ * Returns a list containing all distinct elements that meet the specified [comparitor]
  * @param list the collection to search
  * @param comparitor the comparison function to use
- * @return a list containing the distinct items
+ * @return a [AbstractList] containing the distinct items
  */
 fun<ElementType> Distinct(list: AbstractList<ElementType?>
                           ,comparitor: (ElementType?) -> Boolean) : AbstractList<ElementType?>
@@ -294,10 +302,10 @@ fun<ElementType> Distinct(list: AbstractList<ElementType?>
 }
 
 /**
- * Returns the element at the specified index in the collection
+ * Returns the element at the specified [index] in [list]
  * @param list the collection
  * @param index the index of the item to return
- * @return the item at the specified index in the collection
+ * @return the item at the specified [index] in [list]
  */
 fun<ElementType> ElementAt(list: AbstractList<ElementType?>,index: Int) : ElementType?{
     if(list.size - 1 < index)
@@ -307,10 +315,10 @@ fun<ElementType> ElementAt(list: AbstractList<ElementType?>,index: Int) : Elemen
 }
 
 /**
- * Returns the element at the specified index in the collection or null if the index is out of range
+ * Returns the element at the specified [index] in [list] or null if the index is out of range
  * @param list the collection
  * @param index the index of the item to return
- * @return the item at the specified index in the collection
+ * @return the item at the specified [index] in [list]
  */
 fun<ElementType> ElementAtOrDefault(list: AbstractList<ElementType?>,index: Int) : ElementType?{
     return list[index]
@@ -325,10 +333,10 @@ fun<ElementType> Empty() : AbstractList<ElementType?>{
 }
 
 /**
- * Returns a collection containing items that are not contained in both collections
+ * Returns a collection containing items that are not contained in both [list] and [list2]
  * @param list the first collection
  * @param list2 the second collection
- * @return  a collection containing items that are not contained in both collections
+ * @return An [AbstractList] containing items that are not contained in both [list] and [list2]
  */
 fun<ElementType> Except(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>) : AbstractList<ElementType?>{
     var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
@@ -341,11 +349,11 @@ fun<ElementType> Except(list: AbstractList<ElementType?>,list2: AbstractList<Ele
 }
 
 /**
- * Returns a collection containing items that are not contained in both collections
+ * Returns a collection containing items that are not contained in both [list] and [list2]
  * @param list the first collection
  * @param list2 the second collection
  * @param condition the condition to compare the items with
- * @return  a collection containing items that are not contained in both collections
+ * @return An [AbstractList] containing items that are not contained in both [list] and [list2]
  */
 fun<ElementType> Except(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : AbstractList<ElementType?>{
     var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
@@ -358,10 +366,10 @@ fun<ElementType> Except(list: AbstractList<ElementType?>,list2: AbstractList<Ele
 }
 
 /**
- * Returns the first Element in the collection that meets the specified condition
+ * Returns the first Element in the collection that meets the specified [condition]
  * @param list The collection to search
- * @param condition a lambda that returns true or false to indicate whether the condition is met
- * @return The First element that matches the condition
+ * @param condition a lambda that returns true or false to indicate whether the [condition] is met
+ * @return The First element that matches the [condition]
  */
 fun<ElementType> First(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : ElementType?
 {
@@ -374,9 +382,9 @@ fun<ElementType> First(list: AbstractList<ElementType?>, condition: (ElementType
 }
 
 /**
- * Returns the first Element in the collection
+ * Returns the first Element in [list]
  * @param list The collection to search
- * @return The First element in the collection
+ * @return The First element in [list]
  */
 fun<ElementType> First(list: AbstractList<ElementType?>) : ElementType?
 {
@@ -676,7 +684,8 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
  * @param list the list to search
  * @param comparitor the comparison function to use
  * @return the minimum float value in the list based on [comparitor]
- */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Float) : Float{
+ */
+fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Float) : Float{
     var min : Float = 0.0f
     for(item: ElementType? in list){
         if(item is Number) {
@@ -692,7 +701,8 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
  * @param list the list to search
  * @param comparitor the comparison function to use
  * @return the minimum Int value in the list based on [comparitor]
- */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Int) : Int{
+ */
+fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Int) : Int{
     var min : Int = 0
     for(item: ElementType? in list){
         if(item is Number) {
@@ -708,7 +718,8 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
  * @param list the list to search
  * @param comparitor the comparison function to use
  * @return the minimum Long value in the list based on [comparitor]
- */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Long) : Long{
+ */
+fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Long) : Long{
     var min : Long = 0
     for(item: ElementType? in list){
         if(item is Number) {
@@ -724,7 +735,8 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
  * @param list the list to search
  * @param comparitor the comparison function to use
  * @return the minimum Short value in the list based on [comparitor]
- */fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Short) : Short{
+ */
+fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Short) : Short{
     var min : Short = 0
     for(item: ElementType? in list){
         if(item is Number) {
@@ -734,3 +746,38 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
     }
     return min;
 }
+///**
+// * Returns all the elements of a specified type from the list [list]
+// * @param list the list to search
+// * @return an [AbstractList] containing all the elements of the specified type
+// */
+//
+//inline fun<reified ElementType> OfType(list: AbstractList<Any?>) : AbstractList<ElementType?>{
+//    var result : AbstractList<ElementType?> = ArrayList<ElementType?>()
+//    for(item: Any? in list){
+//        if(item is ElementType?){
+//            result.add(item)
+//        }
+//    }
+//    return result;
+//}
+///**
+
+/**
+ * Returns all the elements of a specified type from the list [list]
+ * @param list the list to search
+ * @return an [ArrayList] containing all the elements of the specified type
+ */
+fun<ElementType> OfType(list: AbstractList<Any?>) : ArrayList<Any?>{
+    var result : ArrayList<Any?> = ArrayList<Any?>()
+    for(i in list.indices){
+        val item : ElementType? = list.get(i) as ElementType?
+        if(item != null)
+            result.add(item)
+    }
+    return result
+}
+//TODO Implement Order By
+
+//fun<ElementType,KeyType> OrderBy(list: AbstractList<ElementType?>, key: String) : AbstractList<ElementType?>{
+//    val persistentClass : Class<ElementType> = (ElementType::class.java as ParameterizedType).javaClass.genericSuperclass.typeName as Class<ElementType>

@@ -24,9 +24,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package linq.testprogram;
 import linq.collections.LinqListFunctionsKt;
-
+import static linq.collections.HelperFunctions.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Tom Needham on 02/02/2016.
@@ -38,12 +40,16 @@ public class Main {
         System.out.println("Hello World");
         ArrayList<Integer> list = new ArrayList<Integer>();
         ArrayList<Integer> list2 = new ArrayList<Integer>();
+        ArrayList<Object> list3 = new ArrayList<Object>();
         list.add(10000);
         list.add(2);
         list.add(5);
         list2.add(7);
         list2.add(4);
         list2.add(5);
+        list3.add(50);
+        list3.add("Hello World");
+        list3.add(100);
         list = new ArrayList<>(LinqListFunctionsKt.Concat(list,list2));
         try {
             int result = LinqListFunctionsKt.First(list, (x) -> x == 5);
@@ -68,10 +74,15 @@ public class Main {
             int last = LinqListFunctionsKt.Last(list2);
             int max = LinqListFunctionsKt.Max(list2);
             int min = LinqListFunctionsKt.Min(list2);
+            ArrayList<String> strings = new ArrayList<String>(CastStringList(LinqListFunctionsKt.OfType(list3)));
             System.out.println("The average value in the list is : " + average);
             System.out.println("The Last item in the list is : " + last);
             System.out.println("The Largest item in the list is : " + max);
             System.out.println("The Smallest item in the list is : " + min);
+            for(String str : strings)
+                System.out.println(str);
+
+
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);
