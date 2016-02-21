@@ -81,8 +81,31 @@ public class Main {
             System.out.println("The Smallest item in the list is : " + min);
             for(String str : strings)
                 System.out.println(str);
-
-
+            ArrayList<Integer> range = LinqListFunctionsKt.Range(100,50);
+            for(Integer num : range)
+                System.out.print(num + ",");
+            System.out.println();
+            ArrayList<Integer> repeat = LinqListFunctionsKt.Repeat(100,10);
+            for(Integer num : repeat)
+                System.out.print(num + ",");
+            System.out.println();
+            range = new ArrayList<>(LinqListFunctionsKt.Reverse(range));
+            for(Integer num : range)
+                System.out.print(num + ",");
+            System.out.println();
+            try {
+                ArrayList<Integer> single1 = new ArrayList<>();
+                single1.add(50);
+                Integer item = LinqListFunctionsKt.Single(single1);
+                System.out.println(item);
+                single1.add(100);
+                item = LinqListFunctionsKt.Single(single1);
+                System.out.println(item);
+            }
+            catch (Exception e){
+                e.printStackTrace(System.err);
+            }
+        System.out.println("After Exception");
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);

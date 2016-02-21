@@ -781,3 +781,56 @@ fun<ElementType> OfType(list: AbstractList<Any?>) : ArrayList<Any?>{
 
 //fun<ElementType,KeyType> OrderBy(list: AbstractList<ElementType?>, key: String) : AbstractList<ElementType?>{
 //    val persistentClass : Class<ElementType> = (ElementType::class.java as ParameterizedType).javaClass.genericSuperclass.typeName as Class<ElementType>
+
+/**
+ * Generates a sequence of [amount] integers starting with value [start]
+ * @param start the number at the start of the sequence
+ * @param amount the amount of numbers that should be in the sequence
+ * @return An [ArrayList] containing the sequence of integers
+ */
+fun Range(start: Int, amount: Int) : ArrayList<Int>{
+    var sequence : ArrayList<Int> = ArrayList<Int>(amount)
+    for(i in IntRange(start,start + amount)){
+        sequence.add(i)
+    }
+    return sequence
+}
+
+/**
+ * Returns a list containing the [element] repeated [times] times
+ * @param element the value to repeat
+ * @param times the amount of times to repeat the [element]
+ * @return An [ArrayList] containing the [element] repeated [times] times
+ */
+fun<ElementType> Repeat(element: ElementType?, times: Int) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>(times)
+    for(i in IntRange(0,times)){
+        result.add(element)
+    }
+    return result
+}
+
+/**
+ * Reverses the order of the items in list[list]
+ * @param list the list to reverse
+ * @return the reversed list
+ */
+fun<ElementType> Reverse(list: AbstractList<ElementType?>) : AbstractList<ElementType?>{
+    list.reverse()
+    return list;
+}
+
+//TODO implement Select
+
+/**
+ * Returns the only element of [list], and throws an exception if there is not exactly one element in the [list].
+ * @throwsan exception if there is not exactly one element in the [list]
+ * @param list the list to return the only element of
+ * @return the only element of the [list]
+ */
+fun<ElementType> Single(list: AbstractList<ElementType?>) : ElementType?{
+    if(list.size == 1)
+        return First(list);
+    else
+        throw Exception("There was more than one element in the list")
+}
