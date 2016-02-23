@@ -24,11 +24,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package linq.testprogram;
 import linq.collections.LinqListFunctionsKt;
-import static linq.collections.HelperFunctions.*;
+import static linq.HelperFunctions.*;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Tom Needham on 02/02/2016.

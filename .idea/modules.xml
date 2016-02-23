@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LINQ-For-Java.iml" filepath="$PROJECT_DIR$/LINQ-For-Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestProgram/TestProgram.iml" filepath="$PROJECT_DIR$/TestProgram/TestProgram.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestProgramJava7/TestProgramJava7.iml" filepath="$PROJECT_DIR$/TestProgramJava7/TestProgramJava7.iml" />
     </modules>
   </component>
 </project>

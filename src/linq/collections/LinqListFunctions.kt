@@ -92,7 +92,7 @@ fun<ElementType> HasAny(list: AbstractList<ElementType?>, condition: (ElementTyp
  * @return the inputted list as an [AbstractList<Any>]
  */
 fun<ElementType> AsAbstractList(list: AbstractList<ElementType?>) : AbstractList<ElementType?>{
-    return list;
+    return list
 }
 
 /**
@@ -110,7 +110,7 @@ fun<ElementType : Number> Average(list: AbstractList<ElementType?>) : ElementTyp
     if(list.size == 0)
     {
         println("Cannot take average of 0 elements")
-        return null;
+        return null
     }
     for(item: Any? in list){
         if(item is Double) {
@@ -130,8 +130,8 @@ fun<ElementType : Number> Average(list: AbstractList<ElementType?>) : ElementTyp
             ltotal /= list.size
         }
         else if(item is Short){
-            stotal = (stotal + item).toShort();
-            stotal = (stotal / list.size).toShort();
+            stotal = (stotal + item).toShort()
+            stotal = (stotal / list.size).toShort()
         }
         else
             println("ERROR: Cannot Take average of type " + item!!.javaClass.toString())
@@ -177,7 +177,7 @@ fun<ElementType> Concat(list: AbstractList<ElementType?>, list2: AbstractList<El
     var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
     ret.addAll(list)
     ret.addAll(list2)
-    return ret;
+    return ret
 }
 
 /**
@@ -278,10 +278,10 @@ fun<ElementType> Distinct(list: AbstractList<ElementType?>) : AbstractList<Eleme
     var ret : AbstractList<ElementType?> = ArrayList<ElementType?>()
     for(item: ElementType? in list){
         if(!Contains(ret,item)) {
-            ret.add(item);
+            ret.add(item)
         }
     }
-    return ret;
+    return ret
 }
 /**
  * Returns a list containing all distinct elements that meet the specified [comparitor]
@@ -378,7 +378,7 @@ fun<ElementType> First(list: AbstractList<ElementType?>, condition: (ElementType
             return item
         }
     }
-    throw IllegalArgumentException("List must contain at least one element");
+    throw IllegalArgumentException("List must contain at least one element")
 }
 
 /**
@@ -391,7 +391,7 @@ fun<ElementType> First(list: AbstractList<ElementType?>) : ElementType?
     if(list.size > 0)
         return ElementAt(list,0)
     else
-        throw IllegalArgumentException("List must contain at least one element");
+        throw IllegalArgumentException("List must contain at least one element")
 }
 
 /**
@@ -432,10 +432,10 @@ fun<ElementType> Intersect(list: AbstractList<ElementType?>,list2: AbstractList<
     var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
     for(item: ElementType? in Distinct(list)){
         if(Contains(Distinct(list2),item)){
-            ret.add(item);
+            ret.add(item)
         }
     }
-    return ret;
+    return ret
 }
 
 /**
@@ -449,10 +449,10 @@ fun<ElementType> Intersect(list: AbstractList<ElementType?>,list2: AbstractList<
     var ret : ArrayList<ElementType?> = ArrayList<ElementType?>()
     for(item: ElementType? in Distinct(list,condition)){
         if(Contains(Distinct(list2,condition),item)){
-            ret.add(item);
+            ret.add(item)
         }
     }
-    return ret;
+    return ret
 }
 
 //TODO Implement Join
@@ -466,13 +466,13 @@ fun<ElementType> Last(list: AbstractList<ElementType?>) : ElementType?{
 }
 
 fun<ElementType> Last(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : ElementType?{
-    var lastMatch : ElementType? = null;
+    var lastMatch : ElementType? = null
     for(item: ElementType? in list){
         if(item != null && condition.invoke(item)){
-            lastMatch = item;
+            lastMatch = item
         }
     }
-    return lastMatch;
+    return lastMatch
 }
 
 /**
@@ -490,7 +490,7 @@ fun<ElementType : Number> Max(list: AbstractList<ElementType?>) : ElementType?{
     if(list.size == 0)
     {
         println("Cannot take maximum of 0 elements")
-        return null;
+        return null
     }
     for(item: ElementType? in list){
         if(item is Double){
@@ -544,7 +544,7 @@ fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (Ele
                 max = item.toDouble()
         }
     }
-    return max;
+    return max
 }
 /**
  * Returns the maximum float value in the list based on [comparitor]
@@ -559,7 +559,7 @@ fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (Ele
                 max = item.toFloat()
         }
     }
-    return max;
+    return max
 }
 
 /**
@@ -575,7 +575,7 @@ fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (Ele
                 max = item.toInt()
         }
     }
-    return max;
+    return max
 }
 
 /**
@@ -591,7 +591,7 @@ fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (Ele
                 max = item.toLong()
         }
     }
-    return max;
+    return max
 }
 
 /**
@@ -607,7 +607,7 @@ fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (Ele
                 max = item.toShort()
         }
     }
-    return max;
+    return max
 }
 /**
  * Returns the Smallest item in the list
@@ -623,7 +623,7 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>) : ElementType?{
     if(list.size == 0)
     {
         println("Cannot take minimum of 0 elements")
-        return null;
+        return null
     }
     for(item: ElementType? in list){
         if(item is Double){
@@ -677,7 +677,7 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
                 min = item.toDouble()
         }
     }
-    return min;
+    return min
 }
 /**
  * Returns the minimum float value in the list based on [comparitor]
@@ -693,7 +693,7 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
                 min = item.toFloat()
         }
     }
-    return min;
+    return min
 }
 
 /**
@@ -710,7 +710,7 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
                 min = item.toInt()
         }
     }
-    return min;
+    return min
 }
 
 /**
@@ -727,7 +727,7 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
                 min = item.toLong()
         }
     }
-    return min;
+    return min
 }
 
 /**
@@ -744,7 +744,7 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
                 min = item.toShort()
         }
     }
-    return min;
+    return min
 }
 ///**
 // * Returns all the elements of a specified type from the list [list]
@@ -759,7 +759,7 @@ fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (Ele
 //            result.add(item)
 //        }
 //    }
-//    return result;
+//    return result
 //}
 ///**
 
@@ -817,7 +817,7 @@ fun<ElementType> Repeat(element: ElementType?, times: Int) : ArrayList<ElementTy
  */
 fun<ElementType> Reverse(list: AbstractList<ElementType?>) : AbstractList<ElementType?>{
     list.reverse()
-    return list;
+    return list
 }
 
 //TODO implement Select
@@ -830,7 +830,117 @@ fun<ElementType> Reverse(list: AbstractList<ElementType?>) : AbstractList<Elemen
  */
 fun<ElementType> Single(list: AbstractList<ElementType?>) : ElementType?{
     if(list.size == 1)
-        return First(list);
+        return First(list)
     else
         throw Exception("There was more than one element in the list")
 }
+
+/**
+ * Returns the only element of [list] or null if there were no items in the list that met the condition
+ * and throws an exception if there is not exactly one element in the [list].
+ * @throwsan exception if there is not exactly one element in the [list]
+ * @param list the list to return the only element of or null
+ * @return the only element of the [list] or null
+ */
+fun<ElementType> Single(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : ElementType?{
+    var matches : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
+        if(condition.invoke(item)){
+            matches.add(item)
+        }
+    }
+    if(matches.size > 1)
+        throw Exception("There was more than one element in the list")
+    else
+        return First(list)
+}
+
+/**
+ * Returns the only element of [list] or null if there were no items in the list
+ * and throws an exception if there is not exactly one element in the [list].
+ * @throwsan exception if there is not exactly one element in the [list]
+ * @param list the list to return the only element of or null
+ * @return the only element of the [list] or null
+ */
+fun<ElementType> SingleOrDefault(list: AbstractList<ElementType?>) : ElementType?{
+    if(list.isEmpty())
+        return null
+    else if(list.size == 1)
+        return First(list)
+    else
+        throw Exception("There was more than one element in the list")
+}
+
+/**
+ * Returns the only element of [list] or null if there were no items in the list that met the condition
+ * and throws an exception if there is not exactly one element in the [list].
+ * @throwsan exception if there is not exactly one element in the [list]
+ * @param list the list to return the only element of or null
+ * @return the only element of the [list] or null
+ */
+fun<ElementType> SingleOrDefault(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : ElementType?{
+    var matches : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
+        if(condition.invoke(item)){
+            matches.add(item)
+        }
+    }
+    if(matches.isEmpty())
+        return null
+    else if(matches.size > 1)
+        throw Exception("There was more than one element in the list")
+    else
+        return First(list)
+}
+
+/**
+ * Returns the contents of [list] after skipping [amount] items
+ * @param list The list of items
+ * @param amount the amount of items to skip
+ * @return the contents of [list] after skipping [amount] items
+ */
+fun<ElementType> Skip(list: AbstractList<ElementType?>,amount: Int) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    if(list.size < amount)
+        return result
+    for(i in IntRange(amount,list.size - 1)){
+        result.add(list[i])
+    }
+    return result;
+}
+
+/**
+ * Returns the contents of [list] after skipping items while the [condition] is true
+ * @param list The list of items
+ * @param condition the condition to skip items while true
+ * @return the contents of [list] after skipping items while [condition] is true
+ */
+fun<ElementType> SkipWhile(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
+        if(condition.invoke(item))
+            continue
+        else
+            result.add(item)
+    }
+    return result
+}
+
+
+/**
+ * Returns the contents of [list] after skipping items while the [condition] is true
+ * @param list The list of items
+ * @param condition the condition to skip items while true
+ * @return the contents of [list] after skipping items while [condition] is true
+ */
+fun<ElementType> SkipWhile(list: AbstractList<ElementType?>,condition: (ElementType?,Int) -> Boolean) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(i in IntRange(0,list.size - 1)){
+        if(condition.invoke(list.get(i),i))
+            continue
+        else
+            result.add(list.get(i))
+    }
+    return result
+}
+
