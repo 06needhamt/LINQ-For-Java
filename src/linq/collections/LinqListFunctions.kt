@@ -906,7 +906,7 @@ fun<ElementType> Skip(list: AbstractList<ElementType?>,amount: Int) : ArrayList<
     for(i in IntRange(amount,list.size - 1)){
         result.add(list[i])
     }
-    return result;
+    return result
 }
 
 /**
@@ -944,3 +944,104 @@ fun<ElementType> SkipWhile(list: AbstractList<ElementType?>,condition: (ElementT
     return result
 }
 
+/**
+ * Returns the sum of all items within the [list]
+ * @param list the list to sum
+ * @return the sum of all the items within the [list]
+ */
+fun<ElementType : Number> Sum(list: AbstractList<ElementType?>) : ElementType?{
+    var dtotal : Double = 0.0
+    var ftotal : Float = 0.0f
+    var itotal : Int = 0
+    var ltotal : Long = 0L
+    var stotal : Short = 0
+
+    for(item: ElementType? in list){
+        if(item is Double){
+            dtotal += item
+        }
+        else if(item is Float){
+            ftotal += item
+        }
+        else if(item is Int) {
+            itotal += item
+        }
+        else if(item is Long){
+            ltotal += item
+        }
+        else if(item is Short){
+            stotal = (stotal + item).toShort()
+        }
+        else
+            println("ERROR: Cannot Take sum of type " + item!!.javaClass.toString())
+    }
+    if(list[0] is Double)
+        return dtotal as ElementType?
+    else if(list[0] is Float)
+        return ftotal as ElementType?
+    else if(list[0] is Int)
+        return itotal as ElementType?
+    else if(list[0] is Long)
+        return ltotal as ElementType?
+    else if(list[0] is Short)
+        return stotal as ElementType?
+    else
+        return null
+}
+/**
+ * Returns the sum of all items within the [list] after applying transform function [comparitor]
+ * @param list the list to sum
+ * @param comparitor a transform function to apply to each element
+ * @return the sum of all the items within the [list] after applying transform function [comparitor]
+ */
+fun<ElementType> Sum(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> ElementType?) : ElementType?{
+    var dtotal : Double = 0.0
+    var ftotal : Float = 0.0f
+    var itotal : Int = 0
+    var ltotal : Long = 0L
+    var stotal : Short = 0
+
+    for(item : ElementType? in list){
+        val value : ElementType? = comparitor.invoke(item)
+        if(value is Double){
+            dtotal += value
+        }
+        else if(value is Float){
+            ftotal += value
+        }
+        else if(value is Int) {
+            itotal += value
+        }
+        else if(value is Long){
+            ltotal += value
+        }
+        else if(value is Short){
+            stotal = (stotal + value).toShort()
+        }
+        else
+            println("ERROR: Cannot Take sum of type " + (value!! as Any).javaClass.toString())
+    }
+    if(list[0] is Double)
+        return dtotal as ElementType?
+    else if(list[0] is Float)
+        return ftotal as ElementType?
+    else if(list[0] is Int)
+        return itotal as ElementType?
+    else if(list[0] is Long)
+        return ltotal as ElementType?
+    else if(list[0] is Short)
+        return stotal as ElementType?
+    else
+        return null
+}
+
+
+fun<ElementType> Take(list: AbstractList<ElementType?>, amount: Int) : ArrayList<ElementType?>{
+    if(list.size < amount)
+        throw Exception("Can not take " + amount + " Elements form a list with " + list.size + " Elements")
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>(amount)
+    for(i in IntRange(0,amount)){
+        result.add(list.get(i))
+    }
+    return result
+}
