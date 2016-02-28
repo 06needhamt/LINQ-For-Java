@@ -1035,7 +1035,13 @@ fun<ElementType> Sum(list: AbstractList<ElementType?>, comparitor: (ElementType?
         return null
 }
 
-
+/**
+ * Returns [amount] items from the [list]
+ * @param list the list to return items from
+ * @param [amount] the amount of items to return
+ * @throws Exception when there are less than [amount] items in the [list]
+ * @return the first [amount] items in the [list]
+ */
 fun<ElementType> Take(list: AbstractList<ElementType?>, amount: Int) : ArrayList<ElementType?>{
     if(list.size < amount)
         throw Exception("Can not take " + amount + " Elements form a list with " + list.size + " Elements")
@@ -1044,4 +1050,22 @@ fun<ElementType> Take(list: AbstractList<ElementType?>, amount: Int) : ArrayList
         result.add(list.get(i))
     }
     return result
+}
+
+/**
+ * Returns items from the [list] while the [condition] is true
+ * @param list the list to return items from
+ * @param condition the condition on which to return items
+ * @return the items which meet [condition]
+ */
+fun<ElementType> TakeWhile(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
+        if(condition.invoke(item)){
+            result.add(item)
+        }
+        else
+            break
+    }
+    return result;
 }
