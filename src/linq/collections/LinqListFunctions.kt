@@ -1086,3 +1086,79 @@ fun<ElementType> ToArray(list: AbstractList<ElementType?>) : Array<ElementType?>
     var result : Array<Any?> = list.toTypedArray()
     return result as Array<ElementType?>
 }
+
+//TODO implement ToDictionary
+
+//TODO implement ToLookup
+
+/**
+ * Performs a Union between [list] and [list2] using the default equality function
+ * @param list the first list
+ * @param list2 the second list
+ * @return the result of the union
+ */
+fun<ElementType> Union(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
+        for(item2: ElementType? in list2){
+            if(item != null && item2 != null)
+                result.add(item2)
+        }
+    }
+    return result
+}
+/**
+ * Performs a Union between [list] and [list2] using [comparitor]
+ * @param list the first list
+ * @param list2 the second list
+ * @param comparitor the comparison function to use
+ * @return the result of the union
+ */
+fun<ElementType> Union(list: AbstractList<ElementType?>,list2: AbstractList<ElementType?>,
+                       comparitor: (ElementType?, ElementType?) -> Boolean) : ArrayList<ElementType?>
+{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
+        for(item2: ElementType? in list2){
+            if(comparitor.invoke(item,item2))
+                result.add(item2)
+        }
+    }
+    return result
+}
+
+/**
+ * Filters a [list] of values based on a [condition].
+ * @param list the list to filter
+ * @param condition the condition to filter the elements with
+ * @return the filtered list
+ */
+fun<ElementType> Where(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(item: ElementType? in list){
+        if(condition.invoke(item)){
+            result.add(item)
+        }
+    }
+    return result
+}
+/**
+ * Filters a [list] of values based on a [condition] and the elements index.
+ * @param list the list to filter
+ * @param condition the condition to filter the elements with
+ * @return the filtered list
+ */
+fun<ElementType> Where(list: AbstractList<ElementType?>,condition: (ElementType?, Int) -> Boolean) : ArrayList<ElementType?>{
+    var result : ArrayList<ElementType?> = ArrayList<ElementType?>()
+    for(i in IntRange(0,list.size)){
+        if(condition.invoke(list.get(i),i)){
+            result.add(list.get(i))
+        }
+    }
+    return result
+}
+
+fun<TypeFirst,TypeSecond,TypeResult> Zip(list: AbstractList<TypeFirst?>,list2: AbstractList<TypeSecond?>) : ArrayList<TypeResult?>{
+    var result : ArrayList<TypeResult?> = ArrayList<TypeResult?>()
+    throw Exception("Not Implemented Yet")
+}
