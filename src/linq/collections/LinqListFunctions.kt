@@ -465,6 +465,12 @@ fun<ElementType> Last(list: AbstractList<ElementType?>) : ElementType?{
     return list[list.count() - 1]
 }
 
+/**
+ * Returns the last item contained in [list] that meets the [condition]
+ * @param list The Collection
+ * @param condition the condition to check the items against
+ * @return the last item contained in [list] that meets the [condition]
+ */
 fun<ElementType> Last(list: AbstractList<ElementType?>,condition: (ElementType?) -> Boolean) : ElementType?{
     var lastMatch : ElementType? = null
     for(item: ElementType? in list){
@@ -1071,7 +1077,11 @@ fun<ElementType> TakeWhile(list: AbstractList<ElementType?>, condition: (Element
 }
 
 //TODO Implement ThenBy
-
+/**
+ * Converts a list of items to an array of items
+ * @param list the list of items
+ * @return an array containing all the items contained in the list
+ */
 fun<ElementType> ToArray(list: AbstractList<ElementType?>) : Array<ElementType?>{
     var result : Array<Any?> = list.toTypedArray()
     return result as Array<ElementType?>

@@ -31,6 +31,12 @@ import java.util.StringJoiner
 /**
  * Created by Tom Needham on 20/02/2016.
  */
+
+/**
+ * Casts a list of [Object] to a List of [String]
+ * @param list the List to cast
+ * @return A List of all the input objects that are [String]
+ */
 fun CastStringList(list: List<Any>): List<String> {
     val cast = ArrayList<String>()
     for (str in list)
@@ -38,7 +44,11 @@ fun CastStringList(list: List<Any>): List<String> {
             cast.add(str)
     return cast
 }
-
+/**
+ * Casts a list of [Object] to a List of [String]
+ * @param list the List to cast
+ * @return A List of all the input objects that are [String]
+ */
 fun CastDoubleList(list: List<Any>): List<Double> {
     val cast = ArrayList<Double>()
     for (str in list)
@@ -46,7 +56,11 @@ fun CastDoubleList(list: List<Any>): List<Double> {
             cast.add(str)
     return cast
 }
-
+/**
+ * Casts a list of [Object] to a List of [Float]
+ * @param list the List to cast
+ * @return A List of all the input objects that are [Float]
+ */
 fun CastFloatList(list: List<Any>): List<Float> {
     val cast = ArrayList<Float>()
     for (str in list)
@@ -54,7 +68,11 @@ fun CastFloatList(list: List<Any>): List<Float> {
             cast.add(str)
     return cast
 }
-
+/**
+ * Casts a list of [Object] to a List of [Long]
+ * @param list the List to cast
+ * @return A List of all the input objects that are [Long]
+ */
 fun CastLongList(list: List<Any>): List<Long> {
     val cast = ArrayList<Long>()
     for (str in list)
@@ -62,7 +80,11 @@ fun CastLongList(list: List<Any>): List<Long> {
             cast.add(str)
     return cast
 }
-
+/**
+ * Casts a list of [Object] to a List of [Int]
+ * @param list the List to cast
+ * @return A List of all the input objects that are [Int]
+ */
 fun CastIntegerList(list: List<Any>): List<Int> {
     val cast = ArrayList<Int>()
     for (str in list)
@@ -70,7 +92,11 @@ fun CastIntegerList(list: List<Any>): List<Int> {
             cast.add(str)
     return cast
 }
-
+/**
+ * Casts a list of [Object] to a List of [Short]
+ * @param list the List to cast
+ * @return A List of all the input objects that are [Short]
+ */
 fun CastShortList(list: List<Any>): List<Short> {
     val cast = ArrayList<Short>()
     for (str in list)
@@ -78,7 +104,11 @@ fun CastShortList(list: List<Any>): List<Short> {
             cast.add(str)
     return cast
 }
-
+/**
+ * Casts a list of [Object] to a List of [Boolean]
+ * @param list the List to cast
+ * @return A List of all the input objects that are [Boolean]
+ */
 fun CastBooleanList(list: List<Any>): List<Boolean> {
     val cast = ArrayList<Boolean>()
     for (str in list)
@@ -87,6 +117,11 @@ fun CastBooleanList(list: List<Any>): List<Boolean> {
     return cast
 }
 
+/**
+ * Casts an array of [Object] to a array of [String]
+ * @param array the array to cast
+ * @return an array of all the input objects that are [String]
+ */
 fun CastStringArray(array: Array<Any>): Array<String?> {
     val cast = arrayOfNulls<String>(array.size)
     for (i in array.indices) {
@@ -97,6 +132,11 @@ fun CastStringArray(array: Array<Any>): Array<String?> {
     return cast
 }
 
+/**
+ * Casts an array of [Object] to a array of [Double]
+ * @param array the array to cast
+ * @return an array of all the input objects that are [Double]
+ */
 fun CastDoubleArray(array: Array<Any>): Array<Double?> {
     val cast = arrayOfNulls<Double>(array.size)
     for (i in array.indices) {
@@ -106,7 +146,11 @@ fun CastDoubleArray(array: Array<Any>): Array<Double?> {
     }
     return cast
 }
-
+/**
+ * Casts an array of [Object] to a array of [Float]
+ * @param array the array to cast
+ * @return an array of all the input objects that are [Float]
+ */
 fun CastFloatArray(array: Array<Any>): Array<Float?> {
     val cast = arrayOfNulls<Float>(array.size)
     for (i in array.indices) {
@@ -116,7 +160,11 @@ fun CastFloatArray(array: Array<Any>): Array<Float?> {
     }
     return cast
 }
-
+/**
+ * Casts an array of [Object] to a array of [Long]
+ * @param array the array to cast
+ * @return an array of all the input objects that are [Long]
+ */
 fun CastLongArray(array: Array<Any>): Array<Long?> {
     val cast = arrayOfNulls<Long>(array.size)
     for (i in array.indices) {
@@ -126,7 +174,11 @@ fun CastLongArray(array: Array<Any>): Array<Long?> {
     }
     return cast
 }
-
+/**
+ * Casts an array of [Object] to a array of [Int]
+ * @param array the array to cast
+ * @return an array of all the input objects that are [Int]
+ */
 fun CastIntegerArray(array: Array<Any>): Array<Int?> {
     val cast = arrayOfNulls<Int>(array.size)
     for (i in array.indices) {
@@ -136,7 +188,11 @@ fun CastIntegerArray(array: Array<Any>): Array<Int?> {
     }
     return cast
 }
-
+/**
+ * Casts an array of [Object] to a array of [Short]
+ * @param array the array to cast
+ * @return an array of all the input objects that are [Short]
+ */
 fun CastShortArray(array: Array<Any>): Array<Short?> {
     val cast = arrayOfNulls<Short>(array.size)
     for (i in array.indices) {
@@ -146,7 +202,11 @@ fun CastShortArray(array: Array<Any>): Array<Short?> {
     }
     return cast
 }
-
+/**
+ * Casts an array of [Object] to a array of [Boolean]
+ * @param array the array to cast
+ * @return an array of all the input objects that are [Boolean]
+ */
 fun CastBooleanArray(array: Array<Any>): Array<Boolean?> {
     val cast = arrayOfNulls<Boolean>(array.size)
     for (i in array.indices) {
