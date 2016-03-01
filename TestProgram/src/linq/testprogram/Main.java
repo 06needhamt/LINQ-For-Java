@@ -23,8 +23,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 package linq.testprogram;
+import linq.HelperFunctionsKt;
 import linq.collections.LinqListFunctionsKt;
-import static linq.HelperFunctions.*;
 
 import java.util.ArrayList;
 
@@ -39,6 +39,7 @@ public class Main {
         ArrayList<Integer> list = new ArrayList<Integer>();
         ArrayList<Integer> list2 = new ArrayList<Integer>();
         ArrayList<Object> list3 = new ArrayList<Object>();
+        ArrayList<String> list4 = new ArrayList<String>();
         list.add(10000);
         list.add(2);
         list.add(5);
@@ -72,7 +73,7 @@ public class Main {
             int last = LinqListFunctionsKt.Last(list2);
             int max = LinqListFunctionsKt.Max(list2);
             int min = LinqListFunctionsKt.Min(list2);
-            ArrayList<String> strings = new ArrayList<String>(CastStringList(LinqListFunctionsKt.OfType(list3)));
+            ArrayList<String> strings = new ArrayList<String>(HelperFunctionsKt.CastStringList(LinqListFunctionsKt.OfType(list3)));
             System.out.println("The average value in the list is : " + average);
             System.out.println("The Last item in the list is : " + last);
             System.out.println("The Largest item in the list is : " + max);
@@ -103,7 +104,14 @@ public class Main {
             catch (Exception e){
                 e.printStackTrace(System.err);
             }
-        System.out.println("After Exception");
+            System.out.println("After Exception");
+            list4.add("Hello");
+            boolean string = LinqListFunctionsKt.HasAny(list4, x -> x.equals("Hello"));
+            System.out.println(string);
+            Integer[] array = HelperFunctionsKt.CastIntegerArray(LinqListFunctionsKt.ToArray(list2));
+            System.out.println("Items in array");
+            for(Integer item : array)
+                System.out.println(item);
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);

@@ -1067,5 +1067,12 @@ fun<ElementType> TakeWhile(list: AbstractList<ElementType?>, condition: (Element
         else
             break
     }
-    return result;
+    return result
+}
+
+//TODO Implement ThenBy
+
+fun<ElementType> ToArray(list: AbstractList<ElementType?>) : Array<ElementType?>{
+    var result : Array<Any?> = list.toTypedArray()
+    return result as Array<ElementType?>
 }
