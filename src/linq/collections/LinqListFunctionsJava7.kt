@@ -31,20 +31,50 @@ import java.util.*
 /**
  * Created by thoma on 23/02/2016.
  */
+class LinqListFunctionsJava7 {
+    companion object LINQJava7 {
+        /**
+         * Determines whether all elements of a sequence satisfy a [condition].
+         * @param list The collection to search
+         * @param condition a lambda that returns true or false to indicate whether all elements meet the [condition]
+         * @return whether all elements meet the condition
+         */
+        @JvmStatic()
+        fun<ElementType> All(list: AbstractList<ElementType?>, condition: LINQLambda<Boolean>): Boolean {
+            for (item: ElementType? in list) {
+                val cond: Boolean? = condition.Call();
+                if (cond == null || !cond) {
+                    return false
+                }
+            }
+            return true
+        }
 
-/**
- * Determines whether all elements of a sequence satisfy a [condition].
- * @param list The collection to search
- * @param condition a lambda that returns true or false to indicate whether all elements meet the [condition]
- * @return whether all elements meet the condition
- */
-fun<ElementType> All(list: AbstractList<ElementType?>, condition: LINQLambda<Boolean>) : Boolean
-{
-    for(item: ElementType? in list){
-        val cond : Boolean? = condition.Call();
-        if(cond == null || !cond){
-            return false
+        /**
+         * Returns the element at the specified [index] in [list]
+         * @param list the collection
+         * @param index the index of the item to return
+         * @return the item at the specified [index] in [list]
+         */
+        @JvmStatic()
+        fun<ElementType> ElementAt(list: AbstractList<ElementType?>, index: Int): ElementType? {
+            if (list.size - 1 < index)
+                return null
+            else
+                return list[index]
+        }
+
+        /**
+         * Returns the first Element in [list]
+         * @param list The collection to search
+         * @return The First element in [list]
+         */
+        @JvmStatic()
+        fun<ElementType> First(list: AbstractList<ElementType?>): ElementType? {
+            if (list.size > 0)
+                return ElementAt(list, 0)
+            else
+                throw IllegalArgumentException("List must contain at least one element")
         }
     }
-    return true
 }
