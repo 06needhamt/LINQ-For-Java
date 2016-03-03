@@ -25,12 +25,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package linq.testprogram.java7;
 
+import linq.lamdba.DefaultLambdaFunctions;
+
 /**
  * Created by thoma on 23/02/2016.
  */
-public class LambdaFunctions {
+public final class LambdaFunctions extends DefaultLambdaFunctions {
 
-    public static boolean cond(int i) {
+    private LambdaFunctions(){
+        throw new RuntimeException("Can not construct an instance of Lambda Functions");
+    }
+    public static boolean conditon(int i) {
         return i == 10;
     }
 }

@@ -25,31 +25,34 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package linq.lamdba
 
-import java.lang.reflect.Method
-
 /**
- * Created by thoma on 23/02/2016.
+ * Created by Tom Needham on 03/03/2016.
  */
-
-class LINQLambda<ReturnType>{
-    var method : Method? = null;
-    var parameters : Array<Any?> = arrayOfNulls(0)
-    var objectRef : Any? = null;
-    val NO_PARAMETERS : Array<Any?> = arrayOfNulls(0)
-
-    constructor(method: Method, objectRef: Any?, pars: Array<Any?>){
-        this.method = method;
-        this.objectRef = objectRef;
-        this.parameters = pars;
-    }
-
-    constructor(method: Method,objectRef: Any?){
-        this.method = method;
-        this.objectRef = objectRef;
-        this.parameters = NO_PARAMETERS;
-    }
-
-    fun Call() : ReturnType?{
-        return method?.invoke(objectRef,*parameters) as ReturnType?
+open class DefaultLambdaFunctions {
+   companion object Functors {
+        @JvmStatic()
+        fun Test(i: Int) : Boolean {
+            return i == 10
+        }
+       @JvmStatic()
+       fun InRange(a: Int, b: Int) : Boolean{
+           return a <= b;
+       }
+       @JvmStatic()
+       fun LessThan(a: Int, b: Int) : Boolean{
+           return a < b;
+       }
+       @JvmStatic()
+       fun MoreThan(a: Int, b: Int) : Boolean{
+           return a > b;
+       }
+       @JvmStatic()
+       fun LessThanOrEqual(a: Int, b: Int) : Boolean{
+           return a <= b;
+       }
+       @JvmStatic()
+       fun MoreThanOrEqual(a: Int, b: Int) : Boolean{
+           return a >= b;
+       }
     }
 }

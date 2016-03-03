@@ -26,7 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package linq.testprogram.java7;
 
 import static linq.collections.LinqListFunctionsJava7.LINQJava7;
-import linq.lamdba.LINQLambda;
+import linq.lamdba.Java7Lambda;
 
 import java.util.ArrayList;
 
@@ -39,11 +39,16 @@ public class Main {
             ArrayList<Integer> list = new ArrayList<Integer>();
             list.add(10);
             int result = LINQJava7.First(list);
-            LINQLambda<Boolean> lambda = new LINQLambda<Boolean>(LambdaFunctions.class.getMethod("cond", Integer.TYPE)
+            Java7Lambda<Boolean> lambda = new Java7Lambda<Boolean>(LambdaFunctions.class.getMethod("Test", Integer.TYPE)
                     ,null
-                    ,new Object[]{11});
+                    ,new Object[]{10});
             boolean all = LINQJava7.All(list, lambda);
+            lambda = new Java7Lambda<Boolean>(LambdaFunctions.class.getMethod("InRange",Integer.TYPE,Integer.TYPE),
+                    null,
+                    new Object[]{10,15});
+            boolean contains = LINQJava7.Contains(list,10,lambda);
             System.out.println(all);
+            System.out.println(contains);
         } catch (Exception ex) {
             ex.printStackTrace(System.err);
         }

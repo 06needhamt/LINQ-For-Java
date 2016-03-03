@@ -196,17 +196,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Determines whether a sequence contains a specified element by using the passed equality function [comparitor]
+         * Determines whether a sequence contains a specified element by using the passed equality function [comparator]
          * @param list the collection to search
          * @param element the element to check for
-         * @param comparitor the comparison function to use
+         * @param comparator the comparison function to use
          * @return whether the collection contains the item
          */
         @JvmStatic()
         fun<ElementType> Contains(list: AbstractList<ElementType?>, element: ElementType?,
-                                  comparitor: (ElementType?, ElementType?) -> Boolean): Boolean {
+                                  comparator: (ElementType?, ElementType?) -> Boolean): Boolean {
             for (item: ElementType? in list) {
-                if (comparitor.invoke(element, item)) {
+                if (comparator.invoke(element, item)) {
                     return true
                 }
             }
@@ -286,17 +286,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns a list containing all distinct elements that meet the specified [comparitor]
+         * Returns a list containing all distinct elements that meet the specified [comparator]
          * @param list the collection to search
-         * @param comparitor the comparison function to use
+         * @param comparator the comparison function to use
          * @return a [AbstractList] containing the distinct items
          */
         @JvmStatic()
         fun<ElementType> Distinct(list: AbstractList<ElementType?>
-                                  , comparitor: (ElementType?) -> Boolean): AbstractList<ElementType?> {
+                                  , comparator: (ElementType?) -> Boolean): AbstractList<ElementType?> {
             var ret: AbstractList<ElementType?> = ArrayList<ElementType?>()
             for (item: ElementType? in list) {
-                if (!Contains(ret, item) && !comparitor.invoke(item)) {
+                if (!Contains(ret, item) && !comparator.invoke(item)) {
                     ret.add(item)
                 }
             }
@@ -362,7 +362,8 @@ class LinqListFunctions {
          * @return An [AbstractList] containing items that are not contained in both [list] and [list2]
          */
         @JvmStatic()
-        fun<ElementType> Except(list: AbstractList<ElementType?>, list2: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean): AbstractList<ElementType?> {
+        fun<ElementType> Except(list: AbstractList<ElementType?>, list2: AbstractList<ElementType?>,
+                                condition: (ElementType?) -> Boolean): AbstractList<ElementType?> {
             var ret: ArrayList<ElementType?> = ArrayList<ElementType?>()
             for (item: ElementType? in list) {
                 if (!Contains(list2, item) && condition.invoke(item)) {
@@ -406,6 +407,7 @@ class LinqListFunctions {
          * @param list The collection to search
          * @return The First element in the collection
          */
+        @JvmStatic()
         fun<ElementType> FirstOrDefault(list: AbstractList<ElementType?>): ElementType? {
             if (list.size > 0)
                 return ElementAt(list, 0)
@@ -419,7 +421,8 @@ class LinqListFunctions {
          * @return The First element that matches the condition or null
          */
         @JvmStatic()
-        fun<ElementType> FirstOrDefault(list: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean): ElementType? {
+        fun<ElementType> FirstOrDefault(list: AbstractList<ElementType?>,
+                                        condition: (ElementType?) -> Boolean): ElementType? {
             for (item: ElementType? in list) {
                 if (condition.invoke(item)) {
                     return item
@@ -454,7 +457,9 @@ class LinqListFunctions {
          * @return list containing all of the distinct items in [list] that also appear in [list2]
          */
         @JvmStatic()
-        fun<ElementType> Intersect(list: AbstractList<ElementType?>, list2: AbstractList<ElementType?>, condition: (ElementType?) -> Boolean): AbstractList<ElementType?> {
+        fun<ElementType> Intersect(list: AbstractList<ElementType?>,
+                                   list2: AbstractList<ElementType?>,
+                                   condition: (ElementType?) -> Boolean): AbstractList<ElementType?> {
             var ret: ArrayList<ElementType?> = ArrayList<ElementType?>()
             for (item: ElementType? in Distinct(list, condition)) {
                 if (Contains(Distinct(list2, condition), item)) {
@@ -524,7 +529,7 @@ class LinqListFunctions {
                         lmax = item.toLong()
                 } else if (item is Short) {
                     if (item > smax)
-                        smax.toShort()
+                        smax = item.toShort()
                 } else
                     println("ERROR: Cannot Take maximum of type " + item!!.javaClass.toString())
             }
@@ -543,17 +548,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the maximum double value in the list based on [comparitor]
+         * Returns the maximum double value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the maximum double value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the maximum double value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Double): Double {
+        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Double): Double {
             var max: Double = 0.0
             for (item: ElementType? in list) {
-                if (item is Number) {
-                    if (comparitor.invoke(item) > max )
+                if (item is Double) {
+                    if (comparator.invoke(item) > max )
                         max = item.toDouble()
                 }
             }
@@ -561,17 +566,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the maximum float value in the list based on [comparitor]
+         * Returns the maximum float value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the maximum float value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the maximum float value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Float): Float {
+        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Float): Float {
             var max: Float = 0.0f
             for (item: ElementType? in list) {
-                if (item is Number) {
-                    if (comparitor.invoke(item) > max )
+                if (item is Float) {
+                    if (comparator.invoke(item) > max )
                         max = item.toFloat()
                 }
             }
@@ -579,17 +584,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the maximum Int value in the list based on [comparitor]
+         * Returns the maximum Int value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the maximum Int value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the maximum Int value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Int): Int {
+        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Int): Int {
             var max: Int = 0
             for (item: ElementType? in list) {
-                if (item is Number) {
-                    if (comparitor.invoke(item) > max )
+                if (item is Int) {
+                    if (comparator.invoke(item) > max )
                         max = item.toInt()
                 }
             }
@@ -597,17 +602,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the maximum Long value in the list based on [comparitor]
+         * Returns the maximum Long value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the maximum Long value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the maximum Long value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Long): Long {
+        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Long): Long {
             var max: Long = 0
             for (item: ElementType? in list) {
-                if (item is Number) {
-                    if (comparitor.invoke(item) > max )
+                if (item is Long) {
+                    if (comparator.invoke(item) > max )
                         max = item.toLong()
                 }
             }
@@ -615,17 +620,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the maximum Short value in the list based on [comparitor]
+         * Returns the maximum Short value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the maximum Short value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the maximum Short value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Short): Short {
+        fun<ElementType : Number> Max(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Short): Short {
             var max: Short = 0
             for (item: ElementType? in list) {
-                if (item is Number) {
-                    if (comparitor.invoke(item) > max )
+                if (item is Short) {
+                    if (comparator.invoke(item) > max )
                         max = item.toShort()
                 }
             }
@@ -682,17 +687,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the minimum double value in the list based on [comparitor]
+         * Returns the minimum double value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the minimum double value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the minimum double value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Double): Double {
+        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Double): Double {
             var min: Double = 0.0
             for (item: ElementType? in list) {
                 if (item is Number) {
-                    if (comparitor.invoke(item) < min )
+                    if (comparator.invoke(item) < min )
                         min = item.toDouble()
                 }
             }
@@ -700,17 +705,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the minimum float value in the list based on [comparitor]
+         * Returns the minimum float value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the minimum float value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the minimum float value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Float): Float {
+        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Float): Float {
             var min: Float = 0.0f
             for (item: ElementType? in list) {
                 if (item is Number) {
-                    if (comparitor.invoke(item) < min )
+                    if (comparator.invoke(item) < min )
                         min = item.toFloat()
                 }
             }
@@ -718,17 +723,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the minimum Int value in the list based on [comparitor]
+         * Returns the minimum Int value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the minimum Int value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the minimum Int value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Int): Int {
+        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Int): Int {
             var min: Int = 0
             for (item: ElementType? in list) {
                 if (item is Number) {
-                    if (comparitor.invoke(item) < min )
+                    if (comparator.invoke(item) < min )
                         min = item.toInt()
                 }
             }
@@ -736,17 +741,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the minimum Long value in the list based on [comparitor]
+         * Returns the minimum Long value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the minimum Long value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the minimum Long value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Long): Long {
+        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Long): Long {
             var min: Long = 0
             for (item: ElementType? in list) {
                 if (item is Number) {
-                    if (comparitor.invoke(item) < min )
+                    if (comparator.invoke(item) < min )
                         min = item.toLong()
                 }
             }
@@ -754,17 +759,17 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the minimum Short value in the list based on [comparitor]
+         * Returns the minimum Short value in the list based on [comparator]
          * @param list the list to search
-         * @param comparitor the comparison function to use
-         * @return the minimum Short value in the list based on [comparitor]
+         * @param comparator the comparison function to use
+         * @return the minimum Short value in the list based on [comparator]
          */
         @JvmStatic()
-        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> Short): Short {
+        fun<ElementType : Number> Min(list: AbstractList<ElementType?>, comparator: (ElementType?) -> Short): Short {
             var min: Short = 0
             for (item: ElementType? in list) {
                 if (item is Number) {
-                    if (comparitor.invoke(item) < min )
+                    if (comparator.invoke(item) < min )
                         min = item.toShort()
                 }
             }
@@ -1021,13 +1026,13 @@ class LinqListFunctions {
         }
 
         /**
-         * Returns the sum of all items within the [list] after applying transform function [comparitor]
+         * Returns the sum of all items within the [list] after applying transform function [comparator]
          * @param list the list to sum
-         * @param comparitor a transform function to apply to each element
-         * @return the sum of all the items within the [list] after applying transform function [comparitor]
+         * @param comparator a transform function to apply to each element
+         * @return the sum of all the items within the [list] after applying transform function [comparator]
          */
         @JvmStatic()
-        fun<ElementType> Sum(list: AbstractList<ElementType?>, comparitor: (ElementType?) -> ElementType?): ElementType? {
+        fun<ElementType : Number> Sum(list: AbstractList<ElementType?>, comparator: (ElementType?) -> ElementType?): ElementType? {
             var dtotal: Double = 0.0
             var ftotal: Float = 0.0f
             var itotal: Int = 0
@@ -1035,7 +1040,7 @@ class LinqListFunctions {
             var stotal: Short = 0
 
             for (item: ElementType? in list) {
-                val value: ElementType? = comparitor.invoke(item)
+                val value: ElementType? = comparator.invoke(item)
                 if (value is Double) {
                     dtotal += value
                 } else if (value is Float) {
@@ -1134,19 +1139,19 @@ class LinqListFunctions {
         }
 
         /**
-         * Performs a Union between [list] and [list2] using [comparitor]
+         * Performs a Union between [list] and [list2] using [comparator]
          * @param list the first list
          * @param list2 the second list
-         * @param comparitor the comparison function to use
+         * @param comparator the comparison function to use
          * @return the result of the union
          */
         @JvmStatic()
         fun<ElementType> Union(list: AbstractList<ElementType?>, list2: AbstractList<ElementType?>,
-                               comparitor: (ElementType?, ElementType?) -> Boolean): ArrayList<ElementType?> {
+                               comparator: (ElementType?, ElementType?) -> Boolean): ArrayList<ElementType?> {
             var result: ArrayList<ElementType?> = ArrayList<ElementType?>()
             for (item: ElementType? in list) {
                 for (item2: ElementType? in list2) {
-                    if (comparitor.invoke(item, item2))
+                    if (comparator.invoke(item, item2))
                         result.add(item2)
                 }
             }
