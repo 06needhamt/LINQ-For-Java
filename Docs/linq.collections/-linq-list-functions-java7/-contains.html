@@ -1,10 +1,10 @@
 <HTML>
 <HEAD>
-<title> / linq.collections.LinqListFunctions.Contains</title>
+<title> / linq.collections.LinqListFunctionsJava7.Contains</title>
 <link rel="stylesheet" href="..\..\style.css">
 </HEAD>
 <BODY>
-<a href="..\index.html">linq.collections</a>&nbsp;/&nbsp;<a href="index.html">LinqListFunctions</a>&nbsp;/&nbsp;<a href=".">Contains</a><br/>
+<a href="..\index.html">linq.collections</a>&nbsp;/&nbsp;<a href="index.html">LinqListFunctionsJava7</a>&nbsp;/&nbsp;<a href=".">Contains</a><br/>
 <br/>
 <h1>Contains</h1>
 <code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Contains</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">element</span><span class="symbol">:</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><br/>
@@ -18,7 +18,7 @@
 whether the collection contains the item<br/>
 <br/>
 <br/>
-<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Contains</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">element</span><span class="symbol">:</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier">comparator</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">,</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><br/>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">&gt;</span> <span class="identifier">Contains</span><span class="symbol">(</span><span class="identifier">list</span><span class="symbol">:</span>&nbsp;<span class="identifier">AbstractList</span><span class="symbol">&lt;</span><span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">element</span><span class="symbol">:</span>&nbsp;<span class="identifier">ElementType</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier">comparator</span><span class="symbol">:</span>&nbsp;<span class="identifier">&lt;ERROR CLASS&gt;</span><span class="symbol">&lt;</span><span class="identifier">Boolean</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><br/>
 <p>Determines whether a sequence contains a specified element by using the passed equality function <a href="-contains.html#comparator">comparator</a></p>
 <h3>Parameters</h3>
 <a name="list"></a>
@@ -26,7 +26,10 @@ whether the collection contains the item<br/>
 <a name="element"></a>
 <code>element</code> - the element to check for<br/>
 <a name="comparator"></a>
-<code>comparator</code> - the comparison function to use<br/>
+<code>comparator</code> - A <a href="#">Java7Lambda</a> to use to compare the items<br/>
+<h3>Exceptions</h3>
+<a name="RuntimeException"></a>
+<code>RuntimeException</code> - if an invalid <a href="#">Java7Lambda</a> is passed<br/>
 <strong>Return</strong><br/>
 whether the collection contains the item<br/>
 <br/>
