@@ -169,7 +169,7 @@ open class DefaultLambdaFunctions {
        fun Pow(a: Short, b: Short) : Short{
            return Math.pow(a.toDouble(),b.toDouble()).toShort()
        }
-       
+
        @JvmStatic()
        fun InRange(a: Long, b: Long) : Boolean{
            return a <= b
@@ -248,7 +248,7 @@ open class DefaultLambdaFunctions {
        fun Pow(a: Long, b: Long) : Long{
            return Math.pow(a.toDouble(),b.toDouble()).toLong()
        }
-       
+
        @JvmStatic()
        fun InRange(a: Float, b: Float) : Boolean{
            return a <= b
@@ -299,7 +299,10 @@ open class DefaultLambdaFunctions {
        fun Mod(a: Float, b: Float) : Float{
            return a.mod(b)
        }
-       
+       @JvmStatic()
+       fun Pow(a: Float, b: Float) : Float{
+           return Math.pow(a.toDouble(),b.toDouble()).toFloat()
+       }
        @JvmStatic()
        fun InRange(a: Double, b: Double) : Boolean{
            return a <= b
@@ -349,6 +352,11 @@ open class DefaultLambdaFunctions {
        @JvmStatic()
        fun Mod(a: Double, b: Double) : Double{
            return a.mod(b)
+       }
+
+       @JvmStatic()
+       fun Pow(a: Double, b: Double) : Double{
+           return Math.pow(a,b)
        }
        
     }
