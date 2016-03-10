@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<title> / linq.sql.parser.Lexer</title>
+<link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="..\index.html">linq.sql.parser</a>&nbsp;/&nbsp;<a href=".">Lexer</a><br/>
+<br/>
+<h1>Lexer</h1>
+<code><span class="keyword">class </span><span class="identifier">Lexer</span></code><br/>
+<br/>
+<br/>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">Lexer</span><span class="symbol">(</span><span class="identifier">inputString</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">Lexer</span><span class="symbol">(</span><span class="identifier">file</span><span class="symbol">:</span>&nbsp;<span class="identifier">File</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="file.html">file</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">file</span><span class="symbol">: </span><span class="identifier">File</span><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="input-string.html">inputString</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">inputString</span><span class="symbol">: </span><span class="identifier">String</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="token-strings.html">tokenStrings</a></td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">tokenStrings</span><span class="symbol">: </span><span class="identifier">LinkedList</span><span class="symbol">&lt;</span><span class="identifier">String</span><span class="symbol">?</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="tokens.html">tokens</a></td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">tokens</span><span class="symbol">: </span><span class="identifier">LinkedList</span><span class="symbol">&lt;</span><a href="..\..\linq.sql.tokens\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-create-tokens.html">CreateTokens</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">CreateTokens</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LinkedList</span><span class="symbol">&lt;</span><a href="..\..\linq.sql.tokens\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-print-tokens.html">PrintTokens</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">PrintTokens</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-start.html">Start</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">Start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-tokenize.html">Tokenize</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">Tokenize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LinkedList</span><span class="symbol">&lt;</span><span class="identifier">String</span><span class="symbol">?</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
