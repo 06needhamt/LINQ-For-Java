@@ -31,8 +31,8 @@ import java.util.StringJoiner
 /**
  * Created by Tom Needham on 20/02/2016.
  */
-class HelperFunctions {
-    companion object CastHelperFunctions {
+class CastHelperFunctions {
+    companion object Functions {
         /**
          * Casts a list of [Object] to a List of [String]
          * @param list the List to cast

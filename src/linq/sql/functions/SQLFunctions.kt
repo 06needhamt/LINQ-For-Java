@@ -29,7 +29,7 @@ import linq.sql.parser.Lexer
 import java.util.*
 
 /**
- * Created by thoma on 09/03/2016.
+ * Created by Tom Needham on 09/03/2016.
  */
 class SQLFunctions {
     companion object SQL{

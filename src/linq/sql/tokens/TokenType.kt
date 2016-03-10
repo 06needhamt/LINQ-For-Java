@@ -28,7 +28,7 @@ package linq.sql.tokens
 import linq.sql.SQLParseException
 
 /**
- * Created by thoma on 09/03/2016.
+ * Created by Tom Needham on 09/03/2016.
  */
 
 interface TokenType {
@@ -78,35 +78,6 @@ interface TokenType {
         GREATER_OR_EQUAL,
         LESS_OR_EQUAL,
         ALL;
-
-        /**
-         * Returns the [String] representation of the operator
-         * @return Returns the [String] representation of the operator
-         */
-        override fun toString() : String {
-            return ResolveName()
-        }
-
-        /**
-         * resolves the typed operator by the type
-         * @return Returns the [String] representation of the typed operator
-         */
-        fun EnumOperatorToken.ResolveName() : String {
-            var result : String
-            when(this) {
-                EQUAL -> result = "="
-                NOT_EQUAL -> result = "!="
-                GREATER_THAN -> result = ">"
-                LESS_THAN -> result = "<"
-                NOT_LESS_THAN -> result = "!<"
-                NOT_GREATER_THAN -> result = "!>"
-                GREATER_OR_EQUAL -> result = ">="
-                LESS_OR_EQUAL -> result = "<="
-                ALL -> result = "*"
-                else -> throw SQLParseException("Error parsing operator " + name)
-            }
-            return result
-        }
     }
     enum class EnumGenericToken {
         IDENTIFIER,

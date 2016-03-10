@@ -28,7 +28,7 @@ package linq.lamdba
 import java.lang.reflect.Method
 
 /**
- * Created by thoma on 23/02/2016.
+ * Created by Tom Needham on 23/02/2016.
  */
 
 class Java7Lambda<ReturnType>{

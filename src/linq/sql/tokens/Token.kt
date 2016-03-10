@@ -25,8 +25,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package linq.sql.tokens
 
+import linq.sql.SQLParseException
+
 /**
- * Created by thoma on 09/03/2016.
+ * Created by Tom Needham on 09/03/2016.
  */
 abstract class Token {
     /**
@@ -77,4 +79,78 @@ abstract class Token {
      * @return whether the [Token] is a string literal
      */
     abstract fun IsIdentifier(token : Token) : Boolean
+    companion object HelperFunctions {
+        /**
+         * resolves the name of the operator by the typed operator
+         * @return Returns the [EnumOperatorToken] type of a typed operator
+         */
+        fun ResolveNameOperator(str : String?) : TokenType.EnumOperatorToken? {
+            if (str == null)
+                throw SQLParseException("Cannot parse operator")
+            var result : TokenType.EnumOperatorToken
+            when (str) {
+                "=" -> result = TokenType.EnumOperatorToken.EQUAL
+                "!=" -> result = TokenType.EnumOperatorToken.NOT_EQUAL
+                "<" -> result = TokenType.EnumOperatorToken.LESS_THAN
+                "!<" -> result = TokenType.EnumOperatorToken.NOT_LESS_THAN
+                "!>" -> result = TokenType.EnumOperatorToken.NOT_GREATER_THAN
+                ">=" -> result = TokenType.EnumOperatorToken.GREATER_OR_EQUAL
+                "<=" -> result = TokenType.EnumOperatorToken.LESS_OR_EQUAL
+                "*" -> result = TokenType.EnumOperatorToken.ALL
+                else -> return null
+            }
+            return result
+        }
+
+        fun ResolveNameKeyword(str : String?) : TokenType.EnumKeywordToken? {
+            if (str == null)
+                throw SQLParseException("Cannot parse operator")
+            var result : TokenType.EnumKeywordToken
+            when (str) {
+                "*" -> result = TokenType.EnumKeywordToken.ALL
+                else -> return null
+            }
+            return result
+        }
+
+        fun ResolveNameGeneric(str : String?) : TokenType.EnumGenericToken? {
+            if (str == null)
+                throw SQLParseException("Cannot parse operator")
+            var result : TokenType.EnumGenericToken
+            when (str) {
+                "\n" -> result = TokenType.EnumGenericToken.NEW_LINE
+                "\t" -> result = TokenType.EnumGenericToken.TAB
+                " " -> result = TokenType.EnumGenericToken.SPACE
+                "," -> result = TokenType.EnumGenericToken.COMMA
+                "." -> result = TokenType.EnumGenericToken.DOT
+                ";" -> result = TokenType.EnumGenericToken.SEMICOLON
+                "(" -> result = TokenType.EnumGenericToken.OPEN_BRACKET
+                ")" -> result = TokenType.EnumGenericToken.CLOSE_BRACKET
+                else -> result = TokenType.EnumGenericToken.IDENTIFIER
+            }
+            return result
+        }
+
+        /**
+         * resolves the typed operator by the type
+         * @return Returns the [String] representation of the typed operator
+         */
+        fun ResolveOperator(enum: TokenType.EnumOperatorToken?) : String? {
+            var result : String
+            when(enum) {
+                TokenType.EnumOperatorToken.EQUAL -> result = "="
+                TokenType.EnumOperatorToken.NOT_EQUAL -> result = "!="
+                TokenType.EnumOperatorToken.GREATER_THAN -> result = ">"
+                TokenType.EnumOperatorToken.LESS_THAN -> result = "<"
+                TokenType.EnumOperatorToken.NOT_LESS_THAN -> result = "!<"
+                TokenType.EnumOperatorToken.NOT_GREATER_THAN -> result = "!>"
+                TokenType.EnumOperatorToken.GREATER_OR_EQUAL -> result = ">="
+                TokenType.EnumOperatorToken.LESS_OR_EQUAL -> result = "<="
+                TokenType.EnumOperatorToken.ALL -> result = "*"
+                else -> return null
+            }
+            return result
+        }
+
+    }
 }

@@ -27,7 +27,7 @@ package linq.sql.tokens
 /**
  * Created by Tom Needham on 10/03/2016.
  */
-class StringLiteralToken : Token, TokenType{
+class GenericToken : Token, TokenType {
     override val name : String
         get() = value
 
@@ -44,7 +44,7 @@ class StringLiteralToken : Token, TokenType{
     override var value : String
 
     override fun ResolveType(token : Token) {
-        type = TokenType.EnumGenericToken.STRING_LITERAL
+        type = TokenType.EnumGenericToken.valueOf(value)
     }
 
     override fun IsKeyword(token : Token) : Boolean {
@@ -60,7 +60,7 @@ class StringLiteralToken : Token, TokenType{
     }
 
     override fun IsStringLiteral(token : Token) : Boolean {
-        return true
+        return false
     }
 
     override fun IsNumericLiteral(token : Token) : Boolean {

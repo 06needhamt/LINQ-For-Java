@@ -26,7 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package linq.sql.tokens
 
 /**
- * Created by thoma on 09/03/2016.
+ * Created by Tom Needham on 09/03/2016.
  */
 class KeywordToken : Token, TokenType {
     override val name : String
@@ -45,7 +45,12 @@ class KeywordToken : Token, TokenType {
     override var value : String
 
     override fun ResolveType(token : Token) {
-        type = TokenType.EnumKeywordToken.valueOf(value)
+        if(TokenType.EnumKeywordToken.values().contains(Token.HelperFunctions.ResolveNameKeyword(value))){
+            type =Token.HelperFunctions.ResolveNameKeyword(value)
+        }
+        else {
+            type = TokenType.EnumKeywordToken.valueOf(value)
+        }
     }
 
     override fun IsKeyword(token : Token) : Boolean {

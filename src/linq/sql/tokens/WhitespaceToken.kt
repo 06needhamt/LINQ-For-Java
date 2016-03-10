@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package linq.sql.tokens
 
 /**
- * Created by thoma on 10/03/2016.
+ * Created by Tom Needham on 10/03/2016.
  */
 class WhitespaceToken : Token, TokenType{
     override val name : String
@@ -35,6 +35,7 @@ class WhitespaceToken : Token, TokenType{
 
     constructor(value : String){
         this.value = value
+        ResolveType(this)
     }
     override fun IsIdentifier(token : Token) : Boolean {
         return false

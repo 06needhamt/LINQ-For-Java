@@ -1,7 +1,7 @@
 package linq.lamdba.exceptions
 
 /**
- * Created by thoma on 04/03/2016.
+ * Created by Tom Needham on 04/03/2016.
  */
 class DivisionByZeroException constructor() : Throwable(){
     override val message: String?

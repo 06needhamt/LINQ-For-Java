@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package linq.sql.tokens
 
 /**
- * Created by thoma on 10/03/2016.
+ * Created by Tom Needham on 10/03/2016.
  */
 class IdentifierToken : Token, TokenType {
     override val name : String
@@ -35,6 +35,7 @@ class IdentifierToken : Token, TokenType {
 
     constructor(value : String){
         this.value = value
+        ResolveType(this)
     }
     override fun IsIdentifier(token : Token) : Boolean {
         return true
@@ -43,7 +44,7 @@ class IdentifierToken : Token, TokenType {
     override var value : String
 
     override fun ResolveType(token : Token) {
-        type = TokenType.EnumGenericToken.valueOf(value)
+        type = TokenType.EnumGenericToken.IDENTIFIER
     }
 
     override fun IsKeyword(token : Token) : Boolean {

@@ -22,48 +22,10 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package linq.sql.tokens
+package linq.sql.parser
 
 /**
  * Created by Tom Needham on 10/03/2016.
  */
-class StringLiteralToken : Token, TokenType{
-    override val name : String
-        get() = value
-
-    var type : TokenType.EnumGenericToken? = null
-
-    constructor(value : String){
-        this.value = value
-        ResolveType(this)
-    }
-    override fun IsIdentifier(token : Token) : Boolean {
-        return false
-    }
-
-    override var value : String
-
-    override fun ResolveType(token : Token) {
-        type = TokenType.EnumGenericToken.STRING_LITERAL
-    }
-
-    override fun IsKeyword(token : Token) : Boolean {
-        return false
-    }
-
-    override fun IsOperator(token : Token) : Boolean {
-        return false
-    }
-
-    override fun IsWhitespace(token : Token) : Boolean {
-        return false
-    }
-
-    override fun IsStringLiteral(token : Token) : Boolean {
-        return true
-    }
-
-    override fun IsNumericLiteral(token : Token) : Boolean {
-        return false
-    }
+class Parser {
 }
