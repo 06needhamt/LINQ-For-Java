@@ -22,16 +22,10 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package linq.sql.parser
+package linq.sql.parser.ast
 
 /**
- * Created by Tom Needham on 10/03/2016.
+ * Created by thoma on 10/03/2016.
  */
-class Parser {
-    val lexical : Lexer
-
-    constructor(lexical: Lexer){
-        this.lexical = lexical
-    }
-
+abstract class Statement {
 }
