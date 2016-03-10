@@ -23,8 +23,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 package linq.testprogram;
+
 import static linq.HelperFunctions.CastHelperFunctions;
 import static linq.collections.LinqListFunctions.LINQ;
+import static linq.sql.functions.SQLFunctions.SQL;
 
 import java.util.ArrayList;
 
@@ -112,9 +114,16 @@ public class Main {
             System.out.println("Items in array");
             for(Integer item : array)
                 System.out.println(item);
+            TestSQL("SELECT * FROM list WHERE value = 10");
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);
         }
+    }
+
+    private static void TestSQL(String sql){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(10);
+        SQL.ExecSQL(list,sql);
     }
 }
