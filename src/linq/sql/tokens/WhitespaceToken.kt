@@ -44,7 +44,7 @@ class WhitespaceToken : Token, TokenType{
     override var value : String
 
     override fun ResolveType(token : Token) {
-        type = TokenType.EnumGenericToken.valueOf(value)
+        type = ResolveNameGeneric(value)
     }
 
     override fun IsKeyword(token : Token) : Boolean {

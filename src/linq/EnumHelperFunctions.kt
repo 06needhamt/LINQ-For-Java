@@ -59,7 +59,8 @@ class EnumHelperFunctions {
                 bool = TokenType.EnumGenericToken.values().contains(TokenType.EnumGenericToken.valueOf(value.toString()))
             }
             catch (ex: IllegalArgumentException){
-                return false
+                bool = Token.ResolveNameGeneric(value) != null
+                return bool
             }
             return bool
         }

@@ -28,4 +28,9 @@ package linq.sql.parser
  * Created by Tom Needham on 10/03/2016.
  */
 class Parser {
+    val lexical : Lexer
+
+    constructor(lexical: Lexer){
+        this.lexical = lexical
+    }
 }

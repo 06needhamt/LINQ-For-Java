@@ -114,7 +114,7 @@ public class Main {
             System.out.println("Items in array");
             for(Integer item : array)
                 System.out.println(item);
-            TestSQL("SELECT * FROM list WHERE value = 10");
+            TestSQL("SELECT * FROM list WHERE value = 10 \n");
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);

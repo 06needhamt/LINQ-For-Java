@@ -65,7 +65,7 @@ class Lexer {
         //val list : LinkedList<String?> = LinkedList(inputString.split(String.format(WITH_DELIMITER,' ', ',', '\n', '\"', '(', ')', '"')).toList())
         val list : LinkedList<String?> = SplitString(inputString, ' ', ',', '\n', '\t', '\"', '(', ')', '"')
         for (value : String? in list) {
-            if (value == "\n" || value == "\t")
+            if (value == "\t")
                 list.remove(value)
         }
         for (item : String? in list) {
@@ -113,12 +113,14 @@ class Lexer {
                         val token : WhitespaceToken = WhitespaceToken(str)
                         list.add(token as Token)
                     }
-                    else -> throw SQLParseException("Found Unknown Token")
+                    else -> {
+                        val token : IdentifierToken = IdentifierToken(str)
+                        list.add(token as Token);
+                    }
                 }
             }
             else{
-                val token : IdentifierToken = IdentifierToken(str)
-                list.add(token as Token);
+                throw SQLParseException("Found Unknown Token " + str)
             }
 
         }
@@ -129,19 +131,26 @@ class Lexer {
         for (tok : Token? in tokens) {
             if (tok is GenericToken) {
                 println(tok?.value + " : " + tok?.type.toString())
-            } else if (tok is IdentifierToken) {
-                println(tok?.value + " : " + "IDENTIFIER")
-            } else if (tok is KeywordToken) {
+            }
+            if (tok is WhitespaceToken) {
+                println(tok?.type.toString())
+            }
+            else if (tok is KeywordToken) {
                 println(tok?.value + " : " + tok?.type.toString())
-            } else if (tok is NumericLiteralToken) {
+            }
+            else if (tok is NumericLiteralToken) {
                 println(tok?.value + " : " + tok?.type.toString())
-            } else if (tok is StringLiteralToken) {
+            }
+            else if (tok is StringLiteralToken) {
                 println(tok?.value + " : " + tok?.type.toString())
-            } else if (tok is OperatorToken) {
+            }
+            else if (tok is OperatorToken) {
                 println(tok?.value + " : " + tok.type.toString())
-            } else if (tok is WhitespaceToken) {
-                println(tok?.value + " : " + tok?.type.toString())
-            } else {
+            }
+            else if (tok is IdentifierToken) {
+                println(tok?.value + " : " + "IDENTIFIER")
+            }
+            else {
                 throw SQLParseException("Invalid Token Type")
             }
         }
