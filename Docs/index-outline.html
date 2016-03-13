@@ -376,7 +376,7 @@
 </BODY>
 </HTML>
 </ul>
-<a href="Docs\index"><a href="linq.sql\index.html"><span class="keyword">package</span> <span class="identifier">linq.sql</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.exceptions\index.html"><span class="keyword">package</span> <span class="identifier">linq.sql.exceptions</span></a></a><br/>
 <ul>
 <HTML>
 <HEAD>
@@ -384,7 +384,7 @@
 <link rel="stylesheet" href="style.css">
 </HEAD>
 <BODY>
-<a href="Docs\index"><a href="linq.sql\-s-q-l-parse-exception\index.html"><span class="keyword">class </span><span class="identifier">SQLParseException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.exceptions\-s-q-l-parse-exception\index.html"><span class="keyword">class </span><span class="identifier">SQLParseException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span></a></a><br/>
 <ul>
 <HTML>
 <HEAD>
@@ -392,8 +392,8 @@
 <link rel="stylesheet" href="style.css">
 </HEAD>
 <BODY>
-<a href="Docs\index"><a href="linq.sql\-s-q-l-parse-exception\-init-.html"><span class="identifier">SQLParseException</span><span class="symbol">(</span><span class="identifier">p0</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span></a></a><br/>
-<a href="Docs\index"><a href="linq.sql\-s-q-l-parse-exception\message.html"><span class="keyword">val </span><span class="identifier">message</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.exceptions\-s-q-l-parse-exception\-init-.html"><span class="identifier">SQLParseException</span><span class="symbol">(</span><span class="identifier">p0</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.exceptions\-s-q-l-parse-exception\message.html"><span class="keyword">val </span><span class="identifier">message</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></a></a><br/>
 </BODY>
 </HTML>
 </ul>
@@ -461,7 +461,233 @@
 <link rel="stylesheet" href="style.css">
 </HEAD>
 <BODY>
-<a href="Docs\index"><a href="linq.sql.parser\-parser\-init-.html"><span class="identifier">Parser</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser\-parser\-init-.html"><span class="identifier">Parser</span><span class="symbol">(</span><span class="identifier">lexical</span><span class="symbol">:</span>&nbsp;<a href="linq.sql.parser\-lexer\index.html"><span class="identifier">Lexer</span></a><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser\-parser\-create-statements.html"><span class="keyword">fun </span><span class="identifier">CreateStatements</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser\-parser\-returns-value.html"><span class="keyword">fun </span><span class="identifier">ReturnsValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser\-parser\lexical.html"><span class="keyword">val </span><span class="identifier">lexical</span><span class="symbol">: </span><a href="linq.sql.parser\-lexer\index.html"><span class="identifier">Lexer</span></a></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser\-parser\statements.html"><span class="keyword">val </span><span class="identifier">statements</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast\index.html"><span class="keyword">package</span> <span class="identifier">linq.sql.parser.ast</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-number-of-parameters\index.html"><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.FIELD]<span class="symbol">)</span> <span class="keyword">annotation</span> <span class="keyword">class </span><span class="identifier">NumberOfParameters</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-number-of-parameters\-init-.html"><span class="identifier">NumberOfParameters</span><span class="symbol">(</span><span class="identifier">parameters</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-number-of-parameters\parameters.html"><span class="keyword">val </span><span class="identifier">parameters</span><span class="symbol">: </span><span class="identifier">Int</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-query\index.html"><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Query</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-query\-init-.html"><span class="identifier">Query</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-query\-execute.html"><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">Execute</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-result-set\index.html"><span class="identifier">ResultSet</span></a></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-query\-validate.html"><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">Validate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-query\statements.html"><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">statements</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">&gt;</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-result-set\index.html"><span class="keyword">class </span><span class="identifier">ResultSet</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-result-set\-init-.html"><span class="identifier">ResultSet</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\index.html"><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Statement</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="linq.sql.parser.ast\-statement-type\index.html"><span class="identifier">StatementType</span></a></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\-init-.html"><span class="identifier">Statement</span><span class="symbol">(</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\-is-query.html"><span class="keyword">abstract</span> <span class="keyword">fun </span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">IsQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\-resolve-type.html"><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">ResolveType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\index.html"><span class="identifier">EnumStatementType</span></a></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\-to-query.html"><span class="keyword">abstract</span> <span class="keyword">fun </span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">ToQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-query\index.html"><span class="identifier">Query</span></a><span class="symbol">?</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\number-of-parameters.html"><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">numberOfParameters</span><span class="symbol">: </span><span class="identifier">Int</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\parameter-statements.html"><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">parameterStatements</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\parameter-tokens.html"><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">parameterTokens</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.tokens\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement\type.html"><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">type</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\index.html"><span class="identifier">EnumStatementType</span></a></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\index.html"><span class="keyword">interface </span><span class="identifier">StatementType</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\index.html"><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">EnumStatementType</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-a-l-l.html"><span class="identifier">ALL</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-a-n-d.html"><span class="identifier">AND</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-a-n-y.html"><span class="identifier">ANY</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-b-e-t-w-e-e-n.html"><span class="identifier">BETWEEN</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-b-y.html"><span class="identifier">BY</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-d-i-s-t-i-n-c-t.html"><span class="identifier">DISTINCT</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-e-l-s-e.html"><span class="identifier">ELSE</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-f-r-o-m.html"><span class="identifier">FROM</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-g-r-o-u-p-b-y.html"><span class="identifier">GROUPBY</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-i-d-e-n-t-i-f-i-e-r.html"><span class="identifier">IDENTIFIER</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-i-f.html"><span class="identifier">IF</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-i-n.html"><span class="identifier">IN</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-i-n-n-e-r_-j-o-i-n.html"><span class="identifier">INNER_JOIN</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-i-s_-n-u-l-l.html"><span class="identifier">IS_NULL</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-j-o-i-n.html"><span class="identifier">JOIN</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-l-e-f-t_-j-o-i-n.html"><span class="identifier">LEFT_JOIN</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-l-i-k-e.html"><span class="identifier">LIKE</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-n-o-t.html"><span class="identifier">NOT</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-n-u-m-e-r-i-c_-l-i-t-e-r-a-l.html"><span class="identifier">NUMERIC_LITERAL</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-o-n.html"><span class="identifier">ON</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-o-p-e-r-a-t-o-r.html"><span class="identifier">OPERATOR</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-o-r.html"><span class="identifier">OR</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-o-r-d-e-r.html"><span class="identifier">ORDER</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-o-r-d-e-r-b-y.html"><span class="identifier">ORDERBY</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-o-u-t-e-r_-j-o-i-n.html"><span class="identifier">OUTER_JOIN</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-r-i-g-h-t_-j-o-i-n.html"><span class="identifier">RIGHT_JOIN</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-s-e-l-e-c-t.html"><span class="identifier">SELECT</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-s-t-r-i-n-g_-l-i-t-e-r-a-l.html"><span class="identifier">STRING_LITERAL</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-u-n-i-q-u-e.html"><span class="identifier">UNIQUE</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\-w-h-e-r-e.html"><span class="identifier">WHERE</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-value-query\index.html"><span class="keyword">class </span><span class="identifier">ValueQuery</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="linq.sql.parser.ast\-query\index.html"><span class="identifier">Query</span></a></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-value-query\-init-.html"><span class="identifier">ValueQuery</span><span class="symbol">(</span><span class="identifier">statements</span><span class="symbol">:</span>&nbsp;<span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-value-query\-execute.html"><span class="keyword">fun </span><span class="identifier">Execute</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-result-set\index.html"><span class="identifier">ResultSet</span></a></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-value-query\-validate.html"><span class="keyword">fun </span><span class="identifier">Validate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-value-query\statements.html"><span class="keyword">val </span><span class="identifier">statements</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">&gt;</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\index.html"><span class="keyword">class </span><span class="identifier">WhereStatement</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">, </span><a href="linq.sql.parser.ast\-statement-type\index.html"><span class="identifier">StatementType</span></a></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\-init-.html"><span class="identifier">WhereStatement</span><span class="symbol">(</span><span class="identifier">parameterStatements</span><span class="symbol">:</span>&nbsp;<span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">numberOfParameters</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\-init-.html"><span class="identifier">WhereStatement</span><span class="symbol">(</span><span class="identifier">parameterTokens</span><span class="symbol">:</span>&nbsp;<span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.tokens\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">numberOfParameters</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier">returnsValue</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\-is-query.html"><span class="keyword">fun </span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">IsQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\-resolve-type.html"><span class="keyword">fun </span><span class="identifier">ResolveType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\index.html"><span class="identifier">EnumStatementType</span></a></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\-to-query.html"><span class="keyword">fun </span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">ToQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-query\index.html"><span class="identifier">Query</span></a><span class="symbol">?</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\number-of-parameters.html"><span class="keyword">val </span><span class="identifier">numberOfParameters</span><span class="symbol">: </span><span class="identifier">Int</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\parameter-statements.html"><span class="keyword">val </span><span class="identifier">parameterStatements</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.parser.ast\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\parameter-tokens.html"><span class="keyword">val </span><span class="identifier">parameterTokens</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="linq.sql.tokens\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast\-where-statement\type.html"><span class="keyword">val </span><span class="identifier">type</span><span class="symbol">: </span><a href="linq.sql.parser.ast\-statement-type\-enum-statement-type\index.html"><span class="identifier">EnumStatementType</span></a></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\index.html"><span class="keyword">package</span> <span class="identifier">linq.sql.parser.ast.exceptions</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-query-exception\index.html"><span class="keyword">class </span><span class="identifier">InvalidQueryException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="linq.sql.parser.ast.exceptions\-invalid-statement-exception\index.html"><span class="identifier">InvalidStatementException</span></a></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-query-exception\-init-.html"><span class="identifier">InvalidQueryException</span><span class="symbol">(</span><span class="identifier">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-query-exception\message.html"><span class="keyword">val </span><span class="identifier">message</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-query-parameters-exception\index.html"><span class="keyword">class </span><span class="identifier">InvalidQueryParametersException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="linq.sql.parser.ast.exceptions\-invalid-statement-parameters-exception\index.html"><span class="identifier">InvalidStatementParametersException</span></a></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-query-parameters-exception\-init-.html"><span class="identifier">InvalidQueryParametersException</span><span class="symbol">(</span><span class="identifier">eP</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier">fP</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-query-parameters-exception\message.html"><span class="keyword">val </span><span class="identifier">message</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-exception\index.html"><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidStatementException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-exception\-init-.html"><span class="identifier">InvalidStatementException</span><span class="symbol">(</span><span class="identifier">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-exception\message.html"><span class="keyword">open</span> <span class="keyword">val </span><span class="identifier">message</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></a></a><br/>
+</BODY>
+</HTML>
+</ul>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-parameters-exception\index.html"><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidStatementParametersException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span></a></a><br/>
+<ul>
+<HTML>
+<HEAD>
+<title>Module Contents</title>
+<link rel="stylesheet" href="style.css">
+</HEAD>
+<BODY>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-parameters-exception\-init-.html"><span class="identifier">InvalidStatementParametersException</span><span class="symbol">(</span><span class="identifier">eP</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier">fP</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-parameters-exception\expected-parameters.html"><span class="keyword">val </span><span class="identifier">expectedParameters</span><span class="symbol">: </span><span class="identifier">Int</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-parameters-exception\found-parameters.html"><span class="keyword">val </span><span class="identifier">foundParameters</span><span class="symbol">: </span><span class="identifier">Int</span></a></a><br/>
+<a href="Docs\index"><a href="linq.sql.parser.ast.exceptions\-invalid-statement-parameters-exception\message.html"><span class="keyword">open</span> <span class="keyword">val </span><span class="identifier">message</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></a></a><br/>
 </BODY>
 </HTML>
 </ul>
