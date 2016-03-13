@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 package linq.sql.tokens
 
-import linq.sql.SQLParseException
+import linq.sql.exceptions.SQLParseException
 
 /**
  * Created by Tom Needham on 09/03/2016.
@@ -34,7 +34,7 @@ abstract class Token {
     /**
      * Property for the string representation of the [Token] i.e. "="
      */
-    abstract var value: String
+    abstract var value : String
 
     /**
      * Resolves the type of this token i.e keyword or operator

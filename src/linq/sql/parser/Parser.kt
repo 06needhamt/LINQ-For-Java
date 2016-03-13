@@ -24,14 +24,48 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package linq.sql.parser
 
+import linq.collections.LinqListFunctions
+import linq.sql.parser.ast.Statement
+import linq.sql.parser.ast.WhereStatement
+import linq.sql.tokens.KeywordToken
+import linq.sql.tokens.Token
+import linq.sql.tokens.TokenType
+import java.util.*
+
 /**
  * Created by Tom Needham on 10/03/2016.
  */
 class Parser {
     val lexical : Lexer
+    val statements : ArrayList<Statement?> = ArrayList<Statement?>()
 
     constructor(lexical: Lexer){
         this.lexical = lexical
+    }
+
+    fun CreateStatements() : ArrayList<Statement?>{
+        val statementList = ArrayList<Statement?>()
+        var i : Int = 0
+        while(i < lexical.tokens.size - 1){
+            val tok : Token? = lexical.tokens.get(i)
+            if(tok is KeywordToken){
+                when (tok.type){
+                    TokenType.EnumKeywordToken.WHERE -> {
+                        val tokens : ArrayList<Token?> = ArrayList(LinqListFunctions.Take(lexical.tokens,3))
+                        val smt : WhereStatement = WhereStatement(tokens,3)
+                        i += 2
+                    }
+                }
+            }
+        }
+        return statementList
+    }
+    fun ReturnsValue() : Boolean{
+        val tok = LinqListFunctions.First(lexical.tokens)
+        if(tok is KeywordToken)
+            return tok.type == TokenType.EnumKeywordToken.SELECT
+        else
+            return false
     }
 
 }

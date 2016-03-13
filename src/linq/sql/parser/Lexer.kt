@@ -30,7 +30,7 @@ package linq.sql.parser
  */
 import linq.EnumHelperFunctions
 import linq.NumberHelperFunctions
-import linq.sql.SQLParseException
+import linq.sql.exceptions.SQLParseException
 import linq.sql.tokens.*
 import java.io.*
 import java.util.*

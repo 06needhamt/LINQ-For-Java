@@ -22,21 +22,14 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package linq.sql.parser.ast
+package linq.sql.parser.ast.exceptions
 
-import linq.sql.tokens.Token
-import java.util.*
+import linq.sql.parser.ast.exceptions.InvalidStatementException
 
 /**
- * Created by Tom Needham on 10/03/2016.
+ * Created by Tom Needham on 12/03/2016.
  */
-abstract class Statement : StatementType {
-    abstract val type : StatementType.EnumStatementType
-    abstract val numberOfParameters : Int
-    abstract val parameterStatements : ArrayList<Statement?>
-    abstract val parameterTokens : ArrayList<Token?>
-
-    abstract fun ResolveType() : StatementType.EnumStatementType
-    abstract fun Statement.IsQuery() : Boolean
-    abstract fun Statement.ToQuery() : Query?
+class InvalidQueryException(message: String) : InvalidStatementException(message) {
+    override val message : String?
+        get() = super.message
 }

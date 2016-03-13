@@ -36,6 +36,7 @@ class SQLFunctions {
         fun<ElementType> ExecSQL(list: AbstractList<ElementType?>, SQL: String) : ArrayList<ElementType?>?{
             val lexical : Lexer = Lexer(SQL)
             if(lexical.Start())
+
                 return ArrayList<ElementType?>()
             else
                 return null
