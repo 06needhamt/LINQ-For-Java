@@ -31,7 +31,7 @@ import linq.lamdba.Java7Lambda;
 import java.util.ArrayList;
 
 /**
- * Created by thoma on 23/02/2016.
+ * Created by Tom Needham on 23/02/2016.
  */
 public class Main {
     public static void main(String[] args) {

@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<title> / linq.sql.parser.ast.WhereStatement</title>
+<link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="..\index.html">linq.sql.parser.ast</a>&nbsp;/&nbsp;<a href=".">WhereStatement</a><br/>
+<br/>
+<h1>WhereStatement</h1>
+<code><span class="keyword">class </span><span class="identifier">WhereStatement</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">, </span><a href="..\-statement-type\index.html"><span class="identifier">StatementType</span></a></code><br/>
+<p>Created by Thomas Needham on 12/03/2016.</p>
+<br/>
+<br/>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">WhereStatement</span><span class="symbol">(</span><span class="identifier">parameterStatements</span><span class="symbol">:</span>&nbsp;<span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">numberOfParameters</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">WhereStatement</span><span class="symbol">(</span><span class="identifier">parameterTokens</span><span class="symbol">:</span>&nbsp;<span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="..\..\linq.sql.tokens\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">numberOfParameters</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">, </span><span class="identifier">returnsValue</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="number-of-parameters.html">numberOfParameters</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">numberOfParameters</span><span class="symbol">: </span><span class="identifier">Int</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="parameter-statements.html">parameterStatements</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">parameterStatements</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="parameter-tokens.html">parameterTokens</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">parameterTokens</span><span class="symbol">: </span><span class="identifier">ArrayList</span><span class="symbol">&lt;</span><a href="..\..\linq.sql.tokens\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="type.html">type</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">type</span><span class="symbol">: </span><a href="..\-statement-type\-enum-statement-type\index.html"><span class="identifier">EnumStatementType</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-is-query.html">IsQuery</a></td>
+<td>
+<code><span class="keyword">fun </span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">IsQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-resolve-type.html">ResolveType</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">ResolveType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="..\-statement-type\-enum-statement-type\index.html"><span class="identifier">EnumStatementType</span></a></code></td>
+</tr>
+<tr>
+<td>
+<a href="-to-query.html">ToQuery</a></td>
+<td>
+<code><span class="keyword">fun </span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">ToQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="..\-query\index.html"><span class="identifier">Query</span></a><span class="symbol">?</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Extension Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="..\-statement\-is-query.html">IsQuery</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">IsQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-is-query.html">IsQuery</a></td>
+<td>
+<code><span class="keyword">fun </span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">IsQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="..\-statement\-to-query.html">ToQuery</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">ToQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="..\-query\index.html"><span class="identifier">Query</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-to-query.html">ToQuery</a></td>
+<td>
+<code><span class="keyword">fun </span><a href="..\-statement\index.html"><span class="identifier">Statement</span></a><span class="symbol">.</span><span class="identifier">ToQuery</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="..\-query\index.html"><span class="identifier">Query</span></a><span class="symbol">?</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

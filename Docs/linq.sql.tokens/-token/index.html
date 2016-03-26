@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<title> / linq.sql.tokens.Token</title>
+<link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="..\index.html">linq.sql.tokens</a>&nbsp;/&nbsp;<a href=".">Token</a><br/>
+<br/>
+<h1>Token</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Token</span></code><br/>
+<p>Created by Tom Needham on 09/03/2016.</p>
+<br/>
+<br/>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">Token</span><span class="symbol">(</span><span class="symbol">)</span></code><p>Created by Tom Needham on 09/03/2016.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="value.html">value</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">var </span><span class="identifier">value</span><span class="symbol">: </span><span class="identifier">String</span></code><p>Property for the string representation of the Token i.e. "="</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-is-identifier.html">IsIdentifier</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">IsIdentifier</span><span class="symbol">(</span><span class="identifier">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns whether the Token is an identifier
+an identifier is any token that does not match any other token types</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-is-keyword.html">IsKeyword</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">IsKeyword</span><span class="symbol">(</span><span class="identifier">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns whether the Token is a keyword i.e WHERE or SELECT</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-is-numeric-literal.html">IsNumericLiteral</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">IsNumericLiteral</span><span class="symbol">(</span><span class="identifier">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns whether the Token is a numeric literal i.e 12345</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-is-operator.html">IsOperator</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">IsOperator</span><span class="symbol">(</span><span class="identifier">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns whether the Token is a operator i.e = or &gt;</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-is-string-literal.html">IsStringLiteral</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">IsStringLiteral</span><span class="symbol">(</span><span class="identifier">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns whether the Token is a string literal i.e "Hello"</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-is-whitespace.html">IsWhitespace</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">IsWhitespace</span><span class="symbol">(</span><span class="identifier">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Returns whether the Token is whitespace i.e   or \n</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-resolve-type.html">ResolveType</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">ResolveType</span><span class="symbol">(</span><span class="identifier">token</span><span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code><p>Resolves the type of this token i.e keyword or operator</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-resolve-name-generic.html">ResolveNameGeneric</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">ResolveNameGeneric</span><span class="symbol">(</span><span class="identifier">str</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="..\-token-type\-enum-generic-token\index.html"><span class="identifier">EnumGenericToken</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-resolve-name-keyword.html">ResolveNameKeyword</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">ResolveNameKeyword</span><span class="symbol">(</span><span class="identifier">str</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="..\-token-type\-enum-keyword-token\index.html"><span class="identifier">EnumKeywordToken</span></a><span class="symbol">?</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-resolve-name-operator.html">ResolveNameOperator</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">ResolveNameOperator</span><span class="symbol">(</span><span class="identifier">str</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="..\-token-type\-enum-operator-token\index.html"><span class="identifier">EnumOperatorToken</span></a><span class="symbol">?</span></code><p>resolves the name of the operator by the typed operator</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-resolve-operator.html">ResolveOperator</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">ResolveOperator</span><span class="symbol">(</span><span class="identifier">enum</span><span class="symbol">:</span>&nbsp;<a href="..\-token-type\-enum-operator-token\index.html"><span class="identifier">EnumOperatorToken</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></code><p>resolves the typed operator by the type</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="..\-generic-token\index.html">GenericToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GenericToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">, </span><a href="..\-token-type\index.html"><span class="identifier">TokenType</span></a></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-identifier-token\index.html">IdentifierToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IdentifierToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">, </span><a href="..\-token-type\index.html"><span class="identifier">TokenType</span></a></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-keyword-token\index.html">KeywordToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">KeywordToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">, </span><a href="..\-token-type\index.html"><span class="identifier">TokenType</span></a></code><p>Created by Tom Needham on 09/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-numeric-literal-token\index.html">NumericLiteralToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">NumericLiteralToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">, </span><a href="..\-token-type\index.html"><span class="identifier">TokenType</span></a></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-operator-token\index.html">OperatorToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">OperatorToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">, </span><a href="..\-token-type\index.html"><span class="identifier">TokenType</span></a></code><p>Created by Tom Needham on 09/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-string-literal-token\index.html">StringLiteralToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">StringLiteralToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">, </span><a href="..\-token-type\index.html"><span class="identifier">TokenType</span></a></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-whitespace-token\index.html">WhitespaceToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">WhitespaceToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Token</span><span class="symbol">, </span><a href="..\-token-type\index.html"><span class="identifier">TokenType</span></a></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

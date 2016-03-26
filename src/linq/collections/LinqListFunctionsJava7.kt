@@ -29,7 +29,7 @@ import linq.lamdba.Java7Lambda
 import java.util.*
 
 /**
- * Created by thoma on 23/02/2016.
+ * Created by Tom Needham on 23/02/2016.
  */
 class LinqListFunctionsJava7 {
     companion object LINQJava7 {

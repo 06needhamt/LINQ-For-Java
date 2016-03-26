@@ -28,7 +28,7 @@ package linq.testprogram.java7;
 import linq.lamdba.DefaultLambdaFunctions;
 
 /**
- * Created by thoma on 23/02/2016.
+ * Created by Tom Needham on 23/02/2016.
  */
 public final class LambdaFunctions extends DefaultLambdaFunctions {
 

@@ -23,8 +23,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 package linq.testprogram;
-import static linq.HelperFunctions.CastHelperFunctions;
+
+import static linq.CastHelperFunctions.Functions;
 import static linq.collections.LinqListFunctions.LINQ;
+import static linq.sql.functions.SQLFunctions.SQL;
 
 import java.util.ArrayList;
 
@@ -73,7 +75,7 @@ public class Main {
             int last = LINQ.Last(list2);
             int max = LINQ.Max(list2);
             int min = LINQ.Min(list2);
-            ArrayList<String> strings = new ArrayList<String>(CastHelperFunctions.CastStringList(LINQ.OfType(list3)));
+            ArrayList<String> strings = new ArrayList<String>(Functions.CastStringList(LINQ.OfType(list3)));
             System.out.println("The average value in the list is : " + average);
             System.out.println("The Last item in the list is : " + last);
             System.out.println("The Largest item in the list is : " + max);
@@ -108,13 +110,24 @@ public class Main {
             list4.add("Hello");
             boolean string = LINQ.HasAny(list4, x -> x.equals("Hello"));
             System.out.println(string);
-            Integer[] array = CastHelperFunctions.CastIntegerArray(LINQ.ToArray(list2));
+            Integer[] array = Functions.CastIntegerArray(LINQ.ToArray(list2));
             System.out.println("Items in array");
             for(Integer item : array)
                 System.out.println(item);
+            TestSQL("SELECT * FROM list WHERE value = 10 \n");
         }
         catch(Exception ex) {
             ex.printStackTrace(System.err);
+        }
+    }
+
+    private static void TestSQL(String sql){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(10);
+        SQL.ExecSQL(list,sql);
+        System.out.println("SQL Results: ");
+        for(Integer num : list){
+            System.out.println(num);
         }
     }
 }

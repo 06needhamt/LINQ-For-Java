@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<title> / linq.sql.tokens.TokenType</title>
+<link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="..\index.html">linq.sql.tokens</a>&nbsp;/&nbsp;<a href=".">TokenType</a><br/>
+<br/>
+<h1>TokenType</h1>
+<code><span class="keyword">interface </span><span class="identifier">TokenType</span></code><br/>
+<p>Created by Tom Needham on 09/03/2016.</p>
+<br/>
+<br/>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-enum-generic-token\index.html">EnumGenericToken</a></td>
+<td>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">EnumGenericToken</span></code></td>
+</tr>
+<tr>
+<td>
+<a href="-enum-keyword-token\index.html">EnumKeywordToken</a></td>
+<td>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">EnumKeywordToken</span></code><p>This enum class contains information about keywords</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-enum-operator-token\index.html">EnumOperatorToken</a></td>
+<td>
+<code><span class="keyword">enum</span> <span class="keyword">class </span><span class="identifier">EnumOperatorToken</span></code><p>This enum class contains information about operators</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="name.html">name</a></td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">val </span><span class="identifier">name</span><span class="symbol">: </span><span class="identifier">String</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-equals-name.html">EqualsName</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">TokenType</span><span class="symbol">.</span><span class="identifier">EqualsName</span><span class="symbol">(</span><span class="identifier">otherName</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Compares two <a href="..\-token\index.html">Token</a> by their type</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-to-string.html">ToString</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">TokenType</span><span class="symbol">.</span><span class="identifier">ToString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">String</span></code><p>Returns the name of the TokenType</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Extension Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-equals-name.html">EqualsName</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">TokenType</span><span class="symbol">.</span><span class="identifier">EqualsName</span><span class="symbol">(</span><span class="identifier">otherName</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Boolean</span></code><p>Compares two <a href="..\-token\index.html">Token</a> by their type</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-to-string.html">ToString</a></td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">TokenType</span><span class="symbol">.</span><span class="identifier">ToString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">String</span></code><p>Returns the name of the TokenType</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="..\-generic-token\index.html">GenericToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GenericToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">, </span><span class="identifier">TokenType</span></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-identifier-token\index.html">IdentifierToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IdentifierToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">, </span><span class="identifier">TokenType</span></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-keyword-token\index.html">KeywordToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">KeywordToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">, </span><span class="identifier">TokenType</span></code><p>Created by Tom Needham on 09/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-numeric-literal-token\index.html">NumericLiteralToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">NumericLiteralToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">, </span><span class="identifier">TokenType</span></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-operator-token\index.html">OperatorToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">OperatorToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">, </span><span class="identifier">TokenType</span></code><p>Created by Tom Needham on 09/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-string-literal-token\index.html">StringLiteralToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">StringLiteralToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">, </span><span class="identifier">TokenType</span></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="..\-whitespace-token\index.html">WhitespaceToken</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">WhitespaceToken</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="..\-token\index.html"><span class="identifier">Token</span></a><span class="symbol">, </span><span class="identifier">TokenType</span></code><p>Created by Tom Needham on 10/03/2016.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
