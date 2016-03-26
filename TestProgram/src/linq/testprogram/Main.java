@@ -125,5 +125,9 @@ public class Main {
         ArrayList<Integer> list = new ArrayList<Integer>();
         list.add(10);
         SQL.ExecSQL(list,sql);
+        System.out.println("SQL Results: ");
+        for(Integer num : list){
+            System.out.println(num);
+        }
     }
 }
